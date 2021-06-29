@@ -25,6 +25,3 @@ Para rodar o projeto, deve-se entrar tanto na pasta 'server' e pasta 'app' e rod
 Depois vá para a pasta raiz do projeto e rode:
 
 * sudo docker-compose up --build
-# HackathonOrc
-# hackathonTime1
-# hackathonTime2
