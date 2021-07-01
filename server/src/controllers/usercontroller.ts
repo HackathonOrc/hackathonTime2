@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
+import * as bcrypt from "bcryptjs";
+
+import Auth from '../middlewares/auth';
+
 import User from "../models/user";
 
+const auth = new Auth();
 export default class UserController {
 
     createUser = async (req: Request, res: Response) => {
@@ -18,8 +23,10 @@ export default class UserController {
             }
 
             const user = await User.create(req.body);
+            
+            const token = await auth.tokenGenerate(user._id);
 
-            return res.status(200).send({ message: "Usuario cadastrado com sucesso" });
+            return res.status(200).send({ message: "Usuario cadastrado com sucesso" , token});
 
         } catch (error) {
 
@@ -29,13 +36,34 @@ export default class UserController {
     }
     getAllUsers = async (req: Request, res: Response) => {
         try {
-            const allUsers = await User.find(
-                {},
-                "first_name narrative_status last_name email is_confirmed userName coins status isFirstTimeAppLaunching first_certificate second_certificate contribution birthday_date quiz_loading quiz_coins ignorance"
-            )
+            const allUsers = await User.find({});
             res.status(200).json(allUsers);
 
         } catch (error) {
+            res.status(500).json({ message: "Falha ao processar requisição", });
+        }
+    }
+    login = async (req: Request, res: Response) => {
+
+        const { email, password } = req.body;
+
+        try {
+            const user = await User.findOne({ email }).select('+password');
+
+            if (!user)
+                return res.status(404).send({ message: "Usuario não encontrado" });
+
+            if (!await bcrypt.compare(password, user.password))
+                return res.status(400).send({ erro: "senha invalida" });
+
+            user.password = undefined;
+
+            const token = await auth.tokenGenerate(user._id);
+
+            return res.send({ user, token });
+
+        } catch (error) {
+            console.error({ error });
             res.status(500).json({ message: "Falha ao processar requisição", });
         }
 

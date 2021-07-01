@@ -12,5 +12,8 @@ userRoutes.post('/', (req: Request, res: Response) => {
 userRoutes.get('/all', (req: Request, res: Response) => {
     userController.getAllUsers(req, res);
 });
+userRoutes.post('/login', (req: Request, res: Response) => {
+    userController.login(req, res);
+});
 
 export default userRoutes;
