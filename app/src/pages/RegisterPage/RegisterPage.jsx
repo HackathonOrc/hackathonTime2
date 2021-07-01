@@ -1,20 +1,21 @@
 import register from "./Register.css";
+import {Page, Container, TextInput} from "./RegisterStyled";
 
 function Register() {
     return (
-        <div className="registerPage">
-            <div className="registerBox">
+        <Page>
+            <Container>
                 <div>Cadastr'orc</div>
-                <input type="text" id="fname" placeholder="Nome" />
-                <input type="text" id="fname" placeholder="Username" />
-                <input type="text" id="fname" placeholder="Email" />
-                <input type="text" id="fname" placeholder="Senha" />
-                <input type="text" id="fname" placeholder="Confirmar Senha" />
+                <TextInput type="text" placeholder="Nome" />
+                <TextInput type="text" placeholder="Username" />
+                <TextInput type="text" placeholder="Email" />
+                <TextInput type="text" placeholder="Senha" />
+                <TextInput type="text" placeholder="Confirmar Senha" />
                 <button>Cadastrar</button>
                 <a href="/login">Uau, esqueci que já tenho uma conta :P</a>
-            </div>
+            </Container>
             
-        </div>
+        </Page>
     );
   }
   

@@ -1,4 +1,6 @@
-.registerPage{
+import styled from "styled-components";
+
+export const Page = styled.body`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,9 +8,9 @@
     background: #70E864;
     min-width: 100vw;
     min-height: 100vh;
-}
+`;
 
-.registerBox{
+export const Container = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -19,16 +21,16 @@
     border-radius: .75em;
     box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
     padding-top: 1em;
-}
+`;
 
-.textInput{
+export const TextInput = styled.input`
     font-family: 'Roboto', sans-serif;
     font-size: 1.55em;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-}
-
-.textInput::placeholder{
     font-weight: 700;
-    color: rgba(0, 0, 0, 0.37);
-}
+    color: rgba(0, 0, 0, 1);
+
+    &:placeholder{
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.37);
+    }
+`;
