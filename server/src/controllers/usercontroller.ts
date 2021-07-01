@@ -4,8 +4,20 @@ import * as bcrypt from "bcryptjs";
 import Auth from '../middlewares/auth';
 
 import User from "../models/user";
+import { JsonWebTokenError } from "jsonwebtoken";
 
+
+import * as jwt from 'jsonwebtoken';
+import * as authConfig from '../config/authConfig.json';
+
+
+// const tokenGenerator = async (_id: string) => {
+
+//     const token = jwt.sign({ id: _id }, authConfig.secret, { expiresIn: 86400 });
+//     return token;
+// }
 const auth = new Auth();
+
 export default class UserController {
 
     createUser = async (req: Request, res: Response) => {
@@ -23,10 +35,12 @@ export default class UserController {
             }
 
             const user = await User.create(req.body);
-            
-            const token = await auth.tokenGenerate(user._id);
+            user.password = undefined;
 
-            return res.status(200).send({ message: "Usuario cadastrado com sucesso" , token});
+            return res.status(200).send({
+                user,
+                token: await auth.tokenGenerator(user._id)
+            });
 
         } catch (error) {
 
@@ -35,7 +49,14 @@ export default class UserController {
         }
     }
     getAllUsers = async (req: Request, res: Response) => {
+
+
         try {
+            const { token } = req.params
+
+            if (!await auth.tokenDecoder(token))
+                return res.status(401).send({ message: "Não autorizado" });
+
             const allUsers = await User.find({});
             res.status(200).json(allUsers);
 
@@ -58,9 +79,10 @@ export default class UserController {
 
             user.password = undefined;
 
-            const token = await auth.tokenGenerate(user._id);
-
-            return res.send({ user, token });
+            return res.status(200).send({
+                user,
+                token: await auth.tokenGenerator(user._id)
+            });
 
         } catch (error) {
             console.error({ error });
