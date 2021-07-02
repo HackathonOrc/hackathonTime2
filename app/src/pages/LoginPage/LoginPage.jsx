@@ -1,18 +1,18 @@
-import login from "./Login.css";
+import {Page, Container, TextInput} from "./LoginStyled";
 
 function Login() {
     return (
-        <div className="loginPage">
-            <div className="loginBox">
+        <Page>
+            <Container>
                 <div>Faça seu login</div>
-                <input type="text" id="fname" placeholder="Email" />
-                <input type="text" id="fname" placeholder="Senha" />
+                <TextInput type="text" id="fname" placeholder="Email" />
+                <TextInput type="text" id="fname" placeholder="Senha" />
                 <button>Entrar</button>
-                <a href="/forgotpassword"> Deu alzhaimer, esqueci minha sala </a>
+                <a href="/forgetpassword"> Deu alzhaimer, esqueci minha sala </a>
                 <a href="/register"> Uau, preciso criar minha conta :D </a>
-            </div>
+            </Container>
             
-        </div>
+        </Page>
     );
   }
   

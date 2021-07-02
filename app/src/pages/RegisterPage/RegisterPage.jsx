@@ -1,4 +1,3 @@
-import register from "./Register.css";
 import {Page, Container, TextInput} from "./RegisterStyled";
 
 function Register() {
