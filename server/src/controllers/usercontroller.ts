@@ -4,18 +4,8 @@ import * as bcrypt from "bcryptjs";
 import Auth from '../middlewares/auth';
 
 import User from "../models/user";
-import { JsonWebTokenError } from "jsonwebtoken";
 
 
-import * as jwt from 'jsonwebtoken';
-import * as authConfig from '../config/authConfig.json';
-
-
-// const tokenGenerator = async (_id: string) => {
-
-//     const token = jwt.sign({ id: _id }, authConfig.secret, { expiresIn: 86400 });
-//     return token;
-// }
 const auth = new Auth();
 
 export default class UserController {
@@ -50,12 +40,7 @@ export default class UserController {
     }
     getAllUsers = async (req: Request, res: Response) => {
 
-
         try {
-            const { token } = req.params
-
-            if (!await auth.tokenDecoder(token))
-                return res.status(401).send({ message: "Não autorizado" });
 
             const allUsers = await User.find({});
             res.status(200).json(allUsers);
