@@ -1,17 +1,17 @@
-import {Page, Container, TextInput} from "./RegisterStyled";
+import {Page, Container, TextInput, Title, Button, Link} from "./RegisterStyled";
 
 function Register() {
     return (
         <Page>
             <Container>
-                <div>Cadastr'orc</div>
-                <TextInput type="text" placeholder="Nome" />
+                <Title>Cadastr'orc</Title>
+                <TextInput placeholder="Nome" placeholderTextColor="red"/>
                 <TextInput type="text" placeholder="Username" />
                 <TextInput type="text" placeholder="Email" />
                 <TextInput type="text" placeholder="Senha" />
                 <TextInput type="text" placeholder="Confirmar Senha" />
-                <button>Cadastrar</button>
-                <a href="/login">Uau, esqueci que já tenho uma conta :P</a>
+                <Button>Cadastrar</Button>
+                <Link href="/login">Uau, esqueci que já tenho uma conta :P</Link>
             </Container>
             
         </Page>
