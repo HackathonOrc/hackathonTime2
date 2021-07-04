@@ -3,7 +3,7 @@ import { Schema, model, Document } from 'mongoose';
 import * as bcrypt from "bcryptjs";
 
 
-interface IUser {
+interface IUser extends Document {
     userName: string,
     name: string,
     email: string,
@@ -32,10 +32,11 @@ const UserSchema = new Schema<IUser>({
 });
 
 UserSchema.pre<IUser>('save', async function (next) {
-    
+
     const user = this;
 
-    // if (!user.isModified("password")) return next();
+    if (!user.isModified("password"))
+        return next();
 
     const salt = await bcrypt.genSalt(10);
 
