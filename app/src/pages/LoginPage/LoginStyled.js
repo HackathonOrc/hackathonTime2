@@ -32,6 +32,7 @@ export const TextInput = styled.input`
     color: rgba(161, 161, 161);
     border-bottom: 2px solid rgba(161, 161, 161);  
     outline: none;  
+    margin-top: 2rem;
 
     ::placeholder,
     ::-webkit-input-placeholder {
@@ -44,6 +45,7 @@ export const Title = styled.h1`
     font-size: 3em;
     font-weight: 400;
     color: rgba(0, 0, 0, 1);
+    margin-top: -4rem;
 `;
 
 export const Button = styled.button`
@@ -57,6 +59,7 @@ export const Button = styled.button`
     font-weight: 400;
     color: #6AE01A;
     cursor: pointer;
+    margin-top: 1rem;
 
 `;
 

@@ -5,7 +5,7 @@ function Login() {
     return (
         <Page>
             <Container>
-                <img src={orc_jump} width='20%'/>
+                <img alt="orcinho" src={orc_jump} width='20%'/>
                 <Title>Faça seu login</Title>
                 <TextInput type="text" id="fname" placeholder="Email" />
                 <TextInput type="text" id="fname" placeholder="Senha" />

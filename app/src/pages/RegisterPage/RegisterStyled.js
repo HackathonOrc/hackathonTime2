@@ -5,7 +5,7 @@ export const Page = styled.body`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #70E864;
+    background: var(--background);
     min-width: 100vw;
     min-height: 100vh;
 `;
@@ -15,7 +15,7 @@ export const Container = styled.section`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background: #FFFFFF;
+    background: var(--white);
     width: 50vw;
     height: 83.4vh;
     border-radius: 1em;
@@ -50,7 +50,7 @@ export const Button = styled.button`
     width: 18vw;
     height: 8vh;
     background: none;
-    border: 2px solid #6AE01A;
+    border: 2px solid var(--green);
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
     font-size: 2em;
@@ -64,6 +64,6 @@ export const Link = styled.a`
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     font-weight: 700;
-    color: #6AE01A;
+    color: var(--green);
     text-decoration: underline;
 `;
