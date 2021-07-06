@@ -16,12 +16,12 @@ export default class UserController {
 
             const checkEmail = await User.findOne({ email: req.body.email });
             if (checkEmail) {
-                return res.status(400).send("Email ja cadastrado");
+                return res.status(400).json({ message: "Email ja cadastrado" });
             }
 
             const checkUserName = await User.findOne({ userName: req.body.userName });
             if (checkUserName) {
-                return res.status(400).send("Nome de usuario  ja cadastrado");
+                return res.status(400).json({ message: "Nome de usuario  ja cadastrado" });
             }
 
             const user = await User.create(req.body);
@@ -33,11 +33,17 @@ export default class UserController {
             });
 
         } catch (error) {
-
-            console.error({ message: error });
+            console.log(error);
+            res
+              .status(400)
+              .json({
+                message:
+                  "Falha ao criar usuário, talvez você tenha colocado um e-mail já em uso!",
+              });
 
         }
     }
+
     getAllUsers = async (req: Request, res: Response) => {
 
         try {
@@ -49,6 +55,21 @@ export default class UserController {
             res.status(500).json({ message: "Falha ao processar requisição", });
         }
     }
+
+    getOneUser = async (req: Request, res: Response) => {
+
+        try {
+            const data = await User.findById(
+                req.params.id,
+            );
+            res.status(200).json(data);
+        } catch (error) {
+            res.status(500).json({
+                message: "Falha ao pegar usuário",
+            });
+        }
+    };
+
     login = async (req: Request, res: Response) => {
 
         const { email, password } = req.body;
@@ -57,10 +78,10 @@ export default class UserController {
             const user = await User.findOne({ email }).select('+password');
 
             if (!user)
-                return res.status(404).send({ message: "Usuario não encontrado" });
+                return res.status(404).json({ message: "Usuario não encontrado" });
 
             if (!await bcrypt.compare(password, user.password))
-                return res.status(400).send({ erro: "senha invalida" });
+                return res.status(400).json({ erro: "senha invalida" });
 
             user.password = undefined;
 
@@ -70,8 +91,7 @@ export default class UserController {
             });
 
         } catch (error) {
-            console.error({ error });
-            res.status(500).json({ message: "Falha ao processar requisição", });
+            return res.status(400).json({ error: "Login falhou" });
         }
 
     }

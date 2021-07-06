@@ -12,8 +12,12 @@ userRoutes.post('/register', (req: Request, res: Response) => {
     userController.createUser(req, res);
 });
 
-userRoutes.get('/all',auth.autenticate,(req: Request, res: Response) => {
+userRoutes.get('/all', (req: Request, res: Response) => {
     userController.getAllUsers(req, res);
+});
+
+userRoutes.get('/:id', (req: Request, res: Response) => {
+    userController.getOneUser(req, res);
 });
 
 userRoutes.post('/login', (req: Request, res: Response) => {
