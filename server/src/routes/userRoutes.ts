@@ -8,11 +8,11 @@ const auth = new Auth;
 
 const userRoutes = Router();
 
-userRoutes.post('/', (req: Request, res: Response) => {
+userRoutes.post('/register', (req: Request, res: Response) => {
     userController.createUser(req, res);
 });
 
-userRoutes.get('/all/',auth.autenticate,(req: Request, res: Response) => {
+userRoutes.get('/all',auth.autenticate,(req: Request, res: Response) => {
     userController.getAllUsers(req, res);
 });
 
