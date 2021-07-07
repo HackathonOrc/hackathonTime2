@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Page = styled.body`
+export const Page = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,13 +46,18 @@ export const TextInput = styled.input`
         color: rgba(161, 161, 161);
     }
 
+    @media(max-width: 1024px) {
+        font-size: 2em;
+        width: 40vw;
+    }
+
     @media(max-width: 800px) {
         font-size: 1.75em;
         width: 40vw;
     }
 
-    @media(max-width: 1024px) {
-        font-size: 2em;
+    @media(max-width: 500px) {
+        font-size: 1.25em;
         width: 40vw;
     }
 `;
