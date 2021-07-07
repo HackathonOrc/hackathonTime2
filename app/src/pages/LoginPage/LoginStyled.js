@@ -22,6 +22,10 @@ export const Container = styled.section`
     box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
     padding-top: 1em;
     padding-bottom: 1em;
+
+    @media(max-width: 800px) {
+        width: 60vw;
+    }
 `;
 
 export const TextInput = styled.input`
@@ -32,11 +36,15 @@ export const TextInput = styled.input`
     color: rgba(161, 161, 161);
     border-bottom: 2px solid rgba(161, 161, 161);  
     outline: none;  
-    margin-top: 2rem;
 
     ::placeholder,
     ::-webkit-input-placeholder {
         color: rgba(161, 161, 161);
+    }
+
+    @media(max-width: 800px) {
+        font-size: 1.75em;
+        width: 40vw;
     }
 `;
 
@@ -46,11 +54,15 @@ export const Title = styled.h1`
     font-weight: 400;
     color: rgba(0, 0, 0, 1);
     margin-top: -4rem;
+
+    @media(max-width: 800px) {
+        font-size: 2.25em;
+    }
 `;
 
 export const Button = styled.button`
-    width: 18vw;
-    height: 8vh;
+    width: min(34rem, 70%);
+    height: 5rem;
     background: none;
     border: 2px solid #6AE01A;
     border-radius: 5px;
@@ -61,6 +73,9 @@ export const Button = styled.button`
     cursor: pointer;
     margin-top: 1rem;
 
+    @media(max-width: 800px) {
+        width: 35vw;
+    }
 `;
 
 export const Link = styled.a`
@@ -69,4 +84,24 @@ export const Link = styled.a`
     font-weight: 700;
     color: #6AE01A;
     text-decoration: underline;
+
+    @media(max-width: 800px) {
+        font-size: 1.2em;
+    }
+
+    @media(max-width: 500px) {
+        font-size: 1em;
+    }
+`;
+
+export const Text = styled.p`
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--black);
+    align-self: center;
+
+    @media(max-width: 700px) {
+        font-size: 1.2em;
+    }
 `;

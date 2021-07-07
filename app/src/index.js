@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ForgetPassword from "./pages/ForgetPasswordPage/ForgetPasswordPage";
+import Register from "./pages/RegisterPage/RegisterPage"
 
 ReactDOM.render(
   <React.StrictMode>
-    <ForgetPassword />
+    <Register />
   </React.StrictMode>,
   document.getElementById('root')
 );
