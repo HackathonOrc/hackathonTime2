@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Register from "./pages/RegisterPage/RegisterPage"
+import MainPage from "./pages/MainPage/MainPage"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Register />
+    <MainPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
