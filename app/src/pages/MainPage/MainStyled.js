@@ -4,35 +4,114 @@ export const Page = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     background: var(--dark-background);
-    height: 100vh;
+    /* height: 100vh; */
+    
 `;
+//#region sidebar
 
-export const CardContent = styled.section`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: var(--black);
-    width: 100%;
+export const Sidebar = styled.section`
+
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    background: var(--dark-background);
+    width: 30rem;
     height: 100%;
 `;
 
 export const Separator = styled.div`
     background: var(--detail-green);
     width: 2px;
-    height: 96%;
+    height: 95vh;
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+    /* margin-right: 2rem; */
 `;
 
-export const Sidebar = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--dark-background);
-    width: 18%;
+
+export const ProfileData = styled.div`
+
+    /* justify-content: flex-start; */
+    /* margin-top: 10em; */
+    margin-right: 0px;
+    margin-left: 3em;
+    margin-top: 8rem;
+
+
+    .Name, .userName{
+        color: var(--white);
+    }
+    .Name{
+        font-size: 3rem;
+        margin-bottom: 0.7em;
+    }
+    .userName{
+        font-size: 1.5rem;
+        margin-left: 0.7rem;
+
+    }
+    
+
+`;
+
+//#endregion
+
+//#region cards
+
+export const CardsSection = styled.section`
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background: var(--black); */
+    margin-left: 13em;
+    margin-top: 10em;
+    width: 100%;
     height: 100%;
 `;
+
+export const CreatePostCard = styled.div`
+    background: #082115;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: var(--detail-green);
+    border-radius: 10px;
+    height: 193px;
+    width: 673px;
+    margin-bottom: 6rem ;
+    .userName{
+        color: var(--white);
+        margin-left: 8rem;
+        margin-top: 1.2rem;
+        font-size: 3rem;
+
+    }
+
+`;
+
+export const PostCard = styled.div`
+background: #082115;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: var(--detail-green);
+    border-radius: 10px;
+    height: 193px;
+    width: 673px;
+    margin-bottom: 6rem ;
+
+    .userName{
+        color: var(--white);
+        margin-left: 8rem;
+        margin-top: 1.2rem;
+        font-size: 3rem;
+
+    }
+
+`;
+
+//#endregion
 
 export const ButtonOutlined = styled.button`
     width: min(10rem, 70%);
@@ -63,17 +142,3 @@ export const ButtonText = styled.p`
     margin: 0 1rem;
 `;
 
-
-export const ProfileData = styled.div`
-justify-content: flex-start;
-margin-top: 12rem;
-.Name, .userName{
-        color: var(--white);
-    }
-    .Name{
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-    
-
-`;
