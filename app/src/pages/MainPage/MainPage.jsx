@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, CardContent, Separator, Sidebar, ButtonOutlined, ProfileData, ButtonText } from "./MainStyled";
+import { Page, CardsSection, Separator, Sidebar, ButtonOutlined, ProfileData, ButtonText, PostCard, CreatePostCard } from "./MainStyled";
 import exitIcon from '../../assets/exitIcon.svg';
 import nightMode from '../../assets/night-mode.svg';
 
@@ -8,9 +8,9 @@ function MainPage() {
         <Page>
             <Sidebar>
                 <ProfileData>
-                    <h3 className='Name'> JongaMatos </h3>
+                    <h3 className='Name'> João Gabriel de Matos</h3>
 
-                    <h4 className='userName'>jonga@jonga.com</h4>
+                    <h4 className='userName'>@JongaMatos</h4>
                 </ProfileData>
                 <ButtonOutlined>
                     <img src={exitIcon} alt="Sair" />
@@ -22,11 +22,27 @@ function MainPage() {
                 </ButtonOutlined>
             </Sidebar>
             <Separator />
-            <CardContent>
-                <div className="card">
-                    card do balacobaco
-                </div>
-            </CardContent>
+            <CardsSection>
+                <CreatePostCard>
+                    <h3 className="userName">JongaMatos</h3>
+                </CreatePostCard>
+                <PostCard>
+                    <h3 className="userName">JongaMatos</h3>
+
+                </PostCard>
+                <PostCard>
+                    <h3 className="userName">JongaMatos</h3>
+
+                </PostCard>
+                <PostCard>
+                    <h3 className="userName">JongaMatos</h3>
+
+                </PostCard>
+                <PostCard>
+                    <h3 className="userName">JongaMatos</h3>
+
+                </PostCard>
+            </CardsSection>
         </Page>
     )
 }
