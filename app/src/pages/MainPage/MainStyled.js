@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Page = styled.section`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
     /* align-items: center; */
     background: var(--dark-background);
     /* height: 100vh; */
@@ -16,6 +16,7 @@ export const Sidebar = styled.section`
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
+    position: fixed;
     background: var(--dark-background);
     width: 30rem;
     height: 100%;
@@ -25,8 +26,10 @@ export const Separator = styled.div`
     background: var(--detail-green);
     width: 2px;
     height: 95vh;
-    margin-left: 1.5rem;
+    margin-left: 30rem;
     margin-top: 2rem;
+    position: fixed;
+
     /* margin-right: 2rem; */
 `;
 
@@ -66,7 +69,7 @@ export const CardsSection = styled.section`
     /* justify-content: center; */
     /* align-items: center; */
     /* background: var(--black); */
-    margin-left: 13em;
+    margin-left: 34em;
     margin-top: 10em;
     width: 100%;
     height: 100%;
