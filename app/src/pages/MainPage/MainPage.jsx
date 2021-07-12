@@ -1,7 +1,8 @@
 import React from 'react';
-import { Page, CardsSection, Separator, Sidebar, ButtonOutlined, ProfileData, ButtonText, PostCard, CreatePostCard } from "./MainStyled";
+import { Logo, Page, CardsSection, Separator, Sidebar, ButtonOutlined, ProfileData, ButtonText, PostCard, CreatePostCard } from "./MainStyled";
 import exitIcon from '../../assets/exitIcon.svg';
 import nightMode from '../../assets/night-mode.svg';
+import logo from '../../assets/logo.svg'
 
 function MainPage() {
     return (
@@ -27,22 +28,30 @@ function MainPage() {
                     <h3 className="userName">JongaMatos</h3>
                 </CreatePostCard>
                 <PostCard>
-                    <h3 className="userName">JongaMatos</h3>
+                    <h3 className="userName">M-Lee</h3>
 
                 </PostCard>
                 <PostCard>
-                    <h3 className="userName">JongaMatos</h3>
+                    <h3 className="userName">Batizta</h3>
 
                 </PostCard>
                 <PostCard>
-                    <h3 className="userName">JongaMatos</h3>
+                    <h3 className="userName">PMBalboa</h3>
 
                 </PostCard>
                 <PostCard>
-                    <h3 className="userName">JongaMatos</h3>
+                    <h3 className="userName">Neithan</h3>
+
+
+                </PostCard>
+                <PostCard>
+                    <h3 className="userName">SemLena</h3>
+
 
                 </PostCard>
             </CardsSection>
+
+            <Logo src={logo} />
         </Page>
     )
 }

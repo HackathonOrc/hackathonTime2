@@ -3,45 +3,42 @@ import styled from "styled-components";
 export const Page = styled.section`
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
-    /* align-items: center; */
     background: var(--dark-background);
-    /* height: 100vh; */
-    
+    /* height: 100%; */
 `;
+
 //#region sidebar
 
 export const Sidebar = styled.section`
 
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    position: fixed;
+    display: flex;
+    flex-direction: column;
+
+    position: sticky;
+    top:0;
+
     background: var(--dark-background);
     width: 30rem;
-    height: 100%;
+    height: 100vh;
 `;
 
 export const Separator = styled.div`
     background: var(--detail-green);
     width: 2px;
-    height: 95vh;
-    margin-left: 30rem;
-    margin-top: 2rem;
-    position: fixed;
+    height: 100vh;
+    margin: 0 2rem;
 
-    /* margin-right: 2rem; */
+    position: sticky;
+    top: 0;
 `;
-
 
 export const ProfileData = styled.div`
 
     /* justify-content: flex-start; */
-    /* margin-top: 10em; */
+    display: flex;
+    flex-direction: column;
     margin-right: 0px;
-    margin-left: 3em;
     margin-top: 8rem;
-
 
     .Name, .userName{
         color: var(--white);
@@ -53,10 +50,7 @@ export const ProfileData = styled.div`
     .userName{
         font-size: 1.5rem;
         margin-left: 0.7rem;
-
     }
-    
-
 `;
 
 //#endregion
@@ -68,9 +62,7 @@ export const CardsSection = styled.section`
     /* flex-direction: row; */
     /* justify-content: center; */
     /* align-items: center; */
-    /* background: var(--black); */
-    margin-left: 34em;
-    margin-top: 10em;
+    margin-top: 8rem;
     width: 100%;
     height: 100%;
 `;
@@ -102,7 +94,7 @@ background: #082115;
     border-radius: 10px;
     height: 193px;
     width: 673px;
-    margin-bottom: 6rem ;
+    margin-bottom: 6rem;
 
     .userName{
         color: var(--white);
@@ -116,20 +108,34 @@ background: #082115;
 
 //#endregion
 
+export const Logo = styled.img`
+
+    align-self: flex-start;
+    position: sticky;
+    top:0;
+
+`;
+
+export const Buttons = styled.div`
+
+    display: flex;
+    justify-content: flex-end;
+`;
+
 export const ButtonOutlined = styled.button`
     width: min(10rem, 70%);
     height: 3rem;
     background: none;
     border: none;
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
+    font-size: 3rem;
     font-weight: 400;
     color: var(--white);
     cursor: pointer;
 
     margin: 2rem 1rem;
 
-    display:flex;
+    display: flex;
     align-items: center;
     
     @media(max-width: 800px) {
