@@ -35,11 +35,11 @@ export default class UserController {
         } catch (error) {
             console.log(error);
             res
-              .status(400)
-              .json({
-                message:
-                  "Falha ao criar usuário, talvez você tenha colocado um e-mail já em uso!",
-              });
+                .status(400)
+                .json({
+                    message:
+                        "Falha ao criar usuário, talvez você tenha colocado um e-mail já em uso!",
+                });
 
         }
     }
