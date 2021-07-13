@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Page = styled.section`
     display: flex;
     flex-direction: row;
-    background: var(--dark-background);
+    background:${props => props.theme.colors.background} ;
+
     /* height: 100%; */
 `;
 
@@ -17,13 +18,14 @@ export const Sidebar = styled.section`
     position: sticky;
     top:0;
 
-    background: var(--dark-background);
+    background:${props => props.theme.colors.background} ;
     width: 30rem;
     height: 100vh;
 `;
 
 export const Separator = styled.div`
-    background: var(--detail-green);
+    background:${props => props.theme.colors.separetor} ;
+
     width: 2px;
     height: 100vh;
     margin: 0 2rem;
@@ -40,14 +42,14 @@ export const ProfileData = styled.div`
     margin-right: 0px;
     margin-top: 8rem;
 
-    .Name, .userName{
-        color: var(--white);
-    }
     .Name{
+        color: ${props => props.theme.colors.title};
+
         font-size: 3rem;
         margin-bottom: 0.7em;
     }
     .userName{
+        color: ${props => props.theme.colors.text};
         font-size: 1.5rem;
         margin-left: 0.7rem;
     }
@@ -68,16 +70,16 @@ export const CardsSection = styled.section`
 `;
 
 export const CreatePostCard = styled.div`
-    background: #082115;
+    background: ${props => props.theme.colors.card};
     border-width: 1.5px;
     border-style: solid;
-    border-color: var(--detail-green);
+    border-color: ${props => props.theme.colors.detail};
     border-radius: 10px;
     height: 193px;
     width: 673px;
     margin-bottom: 6rem ;
     .userName{
-        color: var(--white);
+        color: ${props => props.theme.colors.title};
         margin-left: 8rem;
         margin-top: 1.2rem;
         font-size: 3rem;
@@ -87,17 +89,17 @@ export const CreatePostCard = styled.div`
 `;
 
 export const PostCard = styled.div`
-background: #082115;
+    background: ${props => props.theme.colors.card};
     border-width: 1.5px;
     border-style: solid;
-    border-color: var(--detail-green);
+    border-color: ${props => props.theme.colors.detail};
     border-radius: 10px;
     height: 193px;
     width: 673px;
     margin-bottom: 6rem;
 
     .userName{
-        color: var(--white);
+        color: ${props => props.theme.colors.title};
         margin-left: 8rem;
         margin-top: 1.2rem;
         font-size: 3rem;
@@ -130,7 +132,7 @@ export const ButtonOutlined = styled.button`
     font-family: 'Roboto', sans-serif;
     font-size: 3rem;
     font-weight: 400;
-    color: var(--white);
+    color: ${props => props.theme.colors.buttonText};
     cursor: pointer;
 
     margin: 2rem 1rem;
@@ -147,7 +149,7 @@ export const ButtonText = styled.p`
     font-family: 'Roboto', sans-serif;
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--white);
+    color: ${props => props.theme.colors.buttonText};
     margin: 0 1rem;
 `;
 
