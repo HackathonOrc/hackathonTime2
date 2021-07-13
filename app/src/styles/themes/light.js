@@ -17,8 +17,8 @@ export default {
     },
     logo: logo,
     mode: {
-        icon:modeIcon,
-        text:'Dark Mode'
+        icon: modeIcon,
+        text: 'Dark Mode'
 
     }
 }

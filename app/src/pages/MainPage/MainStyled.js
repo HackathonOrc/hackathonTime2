@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const Page = styled.section`
     display: flex;
@@ -6,6 +6,9 @@ export const Page = styled.section`
     background:${props => props.theme.colors.background} ;
 
     /* height: 100%; */
+    /* @media(max-width: 800px) {
+    flex-direction: column; 
+    } */
 `;
 
 //#region sidebar
@@ -17,10 +20,13 @@ export const Sidebar = styled.section`
 
     position: sticky;
     top:0;
-
     background:${props => props.theme.colors.background} ;
     width: 30rem;
     height: 100vh;
+    /* @media(max-width: 800px) {
+    flex-direction: row; 
+    height: fit-content;
+    width: 100vw;} */
 `;
 
 export const Separator = styled.div`
@@ -32,6 +38,10 @@ export const Separator = styled.div`
 
     position: sticky;
     top: 0;
+    @media(max-width: 800px) {
+        width: 100vw;
+    height: 2px;
+    }
 `;
 
 export const ProfileData = styled.div`
@@ -40,6 +50,7 @@ export const ProfileData = styled.div`
     display: flex;
     flex-direction: column;
     margin-right: 0px;
+    margin-left: 2rem;
     margin-top: 8rem;
 
     .Name{
@@ -53,6 +64,11 @@ export const ProfileData = styled.div`
         font-size: 1.5rem;
         margin-left: 0.7rem;
     }
+
+    @media(max-width: 800px) {
+    margin-top: 0;
+
+    }
 `;
 
 //#endregion
@@ -64,6 +80,7 @@ export const CardsSection = styled.section`
     /* flex-direction: row; */
     /* justify-content: center; */
     /* align-items: center; */
+    margin-left: 12rem;
     margin-top: 8rem;
     width: 100%;
     height: 100%;
@@ -75,14 +92,44 @@ export const CreatePostCard = styled.div`
     border-style: solid;
     border-color: ${props => props.theme.colors.detail};
     border-radius: 10px;
-    height: 193px;
-    width: 673px;
+    min-height: 193px;
+    max-width: 673px;
+    height: fit-content;
+    width: 90%;
     margin-bottom: 6rem ;
+    display: flex;
+    flex-direction: column;
     .userName{
         color: ${props => props.theme.colors.title};
         margin-left: 8rem;
         margin-top: 1.2rem;
         font-size: 3rem;
+
+    }
+    .newPost{
+        margin-top: 1rem;
+        margin-left: 8rem;
+
+        background: transparent;
+        border: none;
+        outline: none;
+
+        font-size: 2rem;
+        color:${props => props.theme.colors.text}; 
+    }
+    .Post{
+        background-color:${props => props.theme.colors.detail} ;
+        color: ${props => props.theme.colors.text};
+        
+        padding: 1rem;
+        width: fit-content;
+
+        font-weight: 600;
+        font-size: 2rem;
+        margin-top: 3rem;
+
+        margin-left: auto;
+        margin-right: 2rem;
 
     }
 
@@ -94,15 +141,28 @@ export const PostCard = styled.div`
     border-style: solid;
     border-color: ${props => props.theme.colors.detail};
     border-radius: 10px;
-    height: 193px;
-    width: 673px;
+    min-height: 193px;
+    max-width: 673px;
+    height: fit-content;
+    width: 90%;
     margin-bottom: 6rem;
+
 
     .userName{
         color: ${props => props.theme.colors.title};
         margin-left: 8rem;
         margin-top: 1.2rem;
         font-size: 3rem;
+
+    }
+    .content{
+        color:${props => props.theme.colors.text};
+        margin-left: 8rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        font-weight: 400;
+        font-size: 2rem;
 
     }
 
@@ -115,7 +175,16 @@ export const Logo = styled.img`
     align-self: flex-start;
     position: sticky;
     top:0;
+    margin-right: 4rem;
+    padding-top: 2rem;
 
+`;
+
+export const ButtonContainer = styled.div`
+
+    display: flex;
+    margin-top: auto;
+    
 `;
 
 export const Buttons = styled.div`
