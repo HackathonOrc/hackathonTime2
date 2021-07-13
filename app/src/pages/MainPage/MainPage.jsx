@@ -7,7 +7,7 @@ import dark from '../../styles/themes/dark'
 import light from '../../styles/themes/light'
 
 
-import { Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, ButtonText, PostCard, CreatePostCard } from "./MainStyled";
+import { Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, PostCard, CreatePostCard, Image } from "./MainStyled";
 
 import exitIcon from '../../assets/exitIcon.svg';
 
@@ -29,13 +29,18 @@ function MainPage() {
                     </ProfileData>
                     <ButtonContainer>
                         <ButtonOutlined onClick={toggleTheme}>
-                            <img src={theme.mode.icon} alt="Modo escuro" />
-                            <ButtonText>{theme.mode.text}</ButtonText>
+                            <Image src={theme.mode.icon} alt="Modo escuro" />
+                            <span className="button-text">
+                                {theme.mode.text}
+                            </span>
                         </ButtonOutlined>
 
                         <ButtonOutlined>
-                            <img src={exitIcon} alt="Sair" />
-                            <ButtonText>Sair</ButtonText>
+                            <Image src={exitIcon} alt="Sair" />
+                            <span className="button-text">
+                                Sair
+                            </span>
+
                         </ButtonOutlined>
                     </ButtonContainer>
 
@@ -57,12 +62,12 @@ function MainPage() {
                     <PostCard>
                         <h3 className="userName">Batizta</h3>
                         <h4 className="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id consequat nibh. Morbi sed volutpat tellus. Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus.                        </h4>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id consequat nibh. Morbi sed volutpat tellus. Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus.                        </h4>
                     </PostCard>
                     <PostCard>
-                        <h3 className="userName">PMBalboa</h3>
+                        <h3 className="userName">PMbalboa10</h3>
                         <h4 className="content">
-                        Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus. Pellentesque ac urna tellus.                        </h4>
+                            Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus. Pellentesque ac urna tellus.                        </h4>
                     </PostCard>
                     <PostCard>
                         <h3 className="userName">Neithan</h3>

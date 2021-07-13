@@ -6,9 +6,11 @@ export const Page = styled.section`
     background:${props => props.theme.colors.background} ;
 
     /* height: 100%; */
-    /* @media(max-width: 800px) {
+
+    @media(max-width: 845px) {
     flex-direction: column; 
-    } */
+    width: 100%;
+    }
 `;
 
 //#region sidebar
@@ -19,14 +21,16 @@ export const Sidebar = styled.section`
     flex-direction: column;
 
     position: sticky;
-    top:0;
+    top: 0;
     background:${props => props.theme.colors.background} ;
     width: 30rem;
     height: 100vh;
-    /* @media(max-width: 800px) {
+    @media(max-width: 845px) {
     flex-direction: row; 
     height: fit-content;
-    width: 100vw;} */
+    width: 97vw;
+    padding: 1rem 0;
+    }
 `;
 
 export const Separator = styled.div`
@@ -38,9 +42,13 @@ export const Separator = styled.div`
 
     position: sticky;
     top: 0;
-    @media(max-width: 800px) {
-        width: 100vw;
-    height: 2px;
+    @media(max-width: 845px) {
+        width: 94%;
+        height: 2px;
+
+        position: sticky;
+        top: 90px;
+
     }
 `;
 
@@ -65,9 +73,12 @@ export const ProfileData = styled.div`
         margin-left: 0.7rem;
     }
 
-    @media(max-width: 800px) {
+    @media(max-width: 845px) {
     margin-top: 0;
-
+        .Name{
+            margin: 1rem 1rem;
+            font-size: 2.2rem;
+        }
     }
 `;
 
@@ -76,14 +87,29 @@ export const ProfileData = styled.div`
 //#region cards
 
 export const CardsSection = styled.section`
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    
     margin-left: 12rem;
     margin-top: 8rem;
     width: 100%;
     height: 100%;
+
+    @media(max-width: 900px) {
+        margin-left: 6rem;
+    };
+
+    @media(max-width: 845px) {
+    margin-left: 4rem;
+    width: 95%;
+
+    justify-content: center;
+    align-content: center;
+
+    }
+
+    @media(max-width: 800px) {
+        margin-left: 3rem;
+    };
+
 `;
 
 export const CreatePostCard = styled.div`
@@ -133,6 +159,15 @@ export const CreatePostCard = styled.div`
 
     }
 
+    @media(max-width: 845px) {
+        max-width: 100%;
+        
+        .userName{
+            margin-left: 2rem;
+        }
+    }
+
+
 `;
 
 export const PostCard = styled.div`
@@ -166,6 +201,15 @@ export const PostCard = styled.div`
 
     }
 
+    @media(max-width: 845px) {
+        max-width: 100%;
+        
+        .userName, .content{
+            margin-left: 2rem;
+        }
+    }
+
+
 `;
 
 //#endregion
@@ -178,19 +222,32 @@ export const Logo = styled.img`
     margin-right: 4rem;
     padding-top: 2rem;
 
+    @media(max-width: 845px) {
+        position: absolute;
+        top: -2rem;
+        width: 0px;
+        margin-right:0px;
+        padding-top: 0px;
+    }
+
 `;
+
+export const Image = styled.img`
+    margin: 0 1rem;
+`;
+
+//#region Button
 
 export const ButtonContainer = styled.div`
 
     display: flex;
     margin-top: auto;
+
+    @media(max-width: 845px) {
+        margin-top: 0;
+        margin-left: auto;
+    }
     
-`;
-
-export const Buttons = styled.div`
-
-    display: flex;
-    justify-content: flex-end;
 `;
 
 export const ButtonOutlined = styled.button`
@@ -198,27 +255,34 @@ export const ButtonOutlined = styled.button`
     height: 3rem;
     background: none;
     border: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 3rem;
-    font-weight: 400;
-    color: ${props => props.theme.colors.buttonText};
-    cursor: pointer;
 
-    margin: 2rem 1rem;
-
-    display: flex;
-    align-items: center;
-    
-    @media(max-width: 800px) {
-        width: 35vw;
-    }
-`;
-
-export const ButtonText = styled.p`
     font-family: 'Roboto', sans-serif;
     font-size: 1.8rem;
     font-weight: 400;
     color: ${props => props.theme.colors.buttonText};
-    margin: 0 1rem;
+
+    white-space: nowrap;
+    text-align: center;
+
+    cursor: pointer;
+
+    margin: 2rem 2rem;
+
+    display: flex;
+    align-items: center;
+    
+    @media(max-width: 845px) {
+        font-size: 1.5rem;
+        margin: 2rem 1.5rem;
+    
+    }
+
+    @media(max-width: 281px) {
+        .button-text{
+            display: none;
+        }
+    }
+
 `;
 
+//#endregion
