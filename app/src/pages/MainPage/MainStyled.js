@@ -21,7 +21,9 @@ export const Sidebar = styled.section`
 
     position: sticky;
     top: 0;
-    background:${props => props.theme.colors.background} ;
+
+    background:${props => props.theme.colors.background};
+
     width: 30rem;
     height: 100vh;
 
@@ -30,6 +32,9 @@ export const Sidebar = styled.section`
     height: fit-content;
     width: 97vw;
     padding: 1rem 0;
+
+    position: sticky;
+    top: -1px;
     }
 
     @media(max-width: 281px) {
@@ -47,6 +52,7 @@ export const Separator = styled.div`
 
     position: sticky;
     top: 0;
+
     @media(max-width: 845px) {
         width: 94%;
         height: 2px;
@@ -57,8 +63,9 @@ export const Separator = styled.div`
     }
 
     @media(max-width: 281px) {
-        width: 85%;
+        width: 90%;
         top: 80px;
+        margin: 0 1rem;
 
     }
 `;
@@ -93,6 +100,7 @@ export const ProfileData = styled.div`
 
     @media(max-width: 281px) {
         margin-left: 0.5rem;
+        margin-top: 0.8rem;
 
         .Name{
             font-size: 1.2rem;
@@ -132,8 +140,9 @@ export const CardsSection = styled.section`
     };
 
     @media(max-width: 281px) {
-        margin: 4rem 1.5rem;
-        margin-bottom: 0;
+        margin-top: 4rem;
+        margin-left: 2rem;
+        width: fit-content;
     };
 
 `;
@@ -151,6 +160,7 @@ export const CreatePostCard = styled.div`
     margin-bottom: 6rem;
     display: flex;
     flex-direction: column;
+
     .userName{
         color: ${props => props.theme.colors.title};
         margin-left: 8rem;
@@ -187,7 +197,8 @@ export const CreatePostCard = styled.div`
 
     @media(max-width: 845px) {
         max-width: 100%;
-        
+        min-height: 156px;
+
         .userName{
             margin-left: 2rem;
         }
@@ -197,7 +208,7 @@ export const CreatePostCard = styled.div`
 
         .userName{
             margin-left: 1.5rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         .newPost{
             margin-left: 1.8rem;
@@ -254,9 +265,10 @@ export const PostCard = styled.div`
 
     @media(max-width: 281px) {
         max-width: 100%;
-        
+        margin-bottom: 3rem;
+
         .userName{
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .content{
@@ -337,6 +349,8 @@ export const ButtonOutlined = styled.button`
     }
 
     @media(max-width: 281px) {
+        margin: 2rem 0.5rem;
+
         .button-text{
             display: none;
         }

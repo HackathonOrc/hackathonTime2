@@ -7,7 +7,7 @@ import dark from '../../styles/themes/dark'
 import light from '../../styles/themes/light'
 
 
-import { Body,Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, PostCard, CreatePostCard, Image } from "./MainStyled";
+import { Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, PostCard, CreatePostCard, Image } from "./MainStyled";
 
 import exitIcon from '../../assets/exitIcon.svg';
 
