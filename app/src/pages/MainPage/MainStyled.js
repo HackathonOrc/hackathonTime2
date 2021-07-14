@@ -1,11 +1,10 @@
 import styled from "styled-components/macro";
 
+
 export const Page = styled.section`
     display: flex;
     flex-direction: row;
     background:${props => props.theme.colors.background} ;
-
-    /* height: 100%; */
 
     @media(max-width: 845px) {
     flex-direction: column; 
@@ -25,12 +24,18 @@ export const Sidebar = styled.section`
     background:${props => props.theme.colors.background} ;
     width: 30rem;
     height: 100vh;
+
     @media(max-width: 845px) {
     flex-direction: row; 
     height: fit-content;
     width: 97vw;
     padding: 1rem 0;
     }
+
+    @media(max-width: 281px) {
+        width: 100%;
+        padding: .5rem 0;
+    } 
 `;
 
 export const Separator = styled.div`
@@ -50,11 +55,16 @@ export const Separator = styled.div`
         top: 90px;
 
     }
+
+    @media(max-width: 281px) {
+        width: 85%;
+        top: 80px;
+
+    }
 `;
 
 export const ProfileData = styled.div`
 
-    /* justify-content: flex-start; */
     display: flex;
     flex-direction: column;
     margin-right: 0px;
@@ -78,6 +88,17 @@ export const ProfileData = styled.div`
         .Name{
             margin: 1rem 1rem;
             font-size: 2.2rem;
+        }
+    }
+
+    @media(max-width: 281px) {
+        margin-left: 0.5rem;
+
+        .Name{
+            font-size: 1.2rem;
+        }
+        .userName{
+            font-size: 1rem;
         }
     }
 `;
@@ -110,6 +131,11 @@ export const CardsSection = styled.section`
         margin-left: 3rem;
     };
 
+    @media(max-width: 281px) {
+        margin: 4rem 1.5rem;
+        margin-bottom: 0;
+    };
+
 `;
 
 export const CreatePostCard = styled.div`
@@ -122,7 +148,7 @@ export const CreatePostCard = styled.div`
     max-width: 673px;
     height: fit-content;
     width: 90%;
-    margin-bottom: 6rem ;
+    margin-bottom: 6rem;
     display: flex;
     flex-direction: column;
     .userName{
@@ -167,6 +193,23 @@ export const CreatePostCard = styled.div`
         }
     }
 
+    @media(max-width: 281px) {
+
+        .userName{
+            margin-left: 1.5rem;
+            font-size: 2rem;
+        }
+        .newPost{
+            margin-left: 1.8rem;
+            font-size: 1.5rem;
+        }
+
+        .Post{
+            font-size: 1.5rem;
+        }
+
+        margin-bottom: 3rem;
+    }
 
 `;
 
@@ -209,6 +252,22 @@ export const PostCard = styled.div`
         }
     }
 
+    @media(max-width: 281px) {
+        max-width: 100%;
+        
+        .userName{
+            font-size: 2rem;
+        }
+
+        .content{
+            font-size: 1.5rem;
+            margin-right: .5rem;
+        }
+
+        .userName, .content{
+            margin-left: 1.5rem;
+        }
+    }
 
 `;
 
