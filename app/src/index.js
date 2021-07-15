@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Register from "./pages/RegisterPage/RegisterPage"
+import Register from "./pages/RegisterPage/RegisterPage";
+import { UserProvider } from "./context/userContext"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Register />
+    <UserProvider>
+      <Register />
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
