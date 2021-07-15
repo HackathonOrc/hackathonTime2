@@ -1,7 +1,6 @@
 import logo from '../../assets/logoDark.svg'
 import modeIcon from '../../assets/modeIconDark.svg'
 
-
 // eslint-disable-next-line
 export default {
 
