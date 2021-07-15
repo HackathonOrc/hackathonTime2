@@ -1,11 +1,17 @@
-import {Page, Container, TextInput, Title, Button, Link, Text} from "./ForgetPasswordStyled";
-import orc_jump from "../../assets/orc-pose-jump 1.png"
+import { Link } from "../../styles/Link";
+import { Button } from "../../styles/Button";
+import { Page } from "../../styles/Page";
+import { Container } from "../../styles/Container";
+import { TextInput } from "../../styles/TextInput";
+import { Title } from "../../styles/Title";
+import { Text } from "../../styles/Text";
+import orc_jump from "../../assets/orc-pose-jump 1.png";
 
 function ForgetPassword() {
     return (
         <Page>
             <Container>
-                <img alt="orcinho" src={orc_jump} width='20%'/>
+                <img alt="orcinho" src={orc_jump} width='20%' />
                 <Title>Esqueceu a senha?</Title>
                 <Text>Digite seu email para que possamos te ajudar!</Text>
                 <TextInput type="text" placeholder="E-mail" />
@@ -14,6 +20,6 @@ function ForgetPassword() {
             </Container>
         </Page>
     );
-  }
-  
-  export default ForgetPassword;
+}
+
+export default ForgetPassword;
