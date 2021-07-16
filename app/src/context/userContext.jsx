@@ -13,9 +13,23 @@ export function UserProvider({ children }) {
     }
     async function saveUser(userData, tempToken) {
 
-        setUser({ userData, token: tempToken })
+        setUser({
+            id: userData._id,
+            userName: userData.userName,
+            name: userData.name,
+            email: userData.email,
+            token: tempToken
+        })
 
-        localStorage.setItem("user", JSON.stringify({ userData, token: tempToken }));
+        localStorage.setItem("user", JSON.stringify(
+            {
+                id: userData._id,
+                userName: userData.userName,
+                name: userData.name,
+                email: userData.email,
+                token: tempToken
+            }
+        ));
     }
 
 
@@ -82,7 +96,7 @@ export function UserProvider({ children }) {
     async function logout() {
         localStorage.removeItem("user");
         setUser(undefined);
-        
+
 
     }
 

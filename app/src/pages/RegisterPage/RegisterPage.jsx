@@ -14,7 +14,7 @@ function Register() {
 
     useEffect(() => {
 
-        // recoverUser()
+        recoverUser()
 
     }, [])
 
