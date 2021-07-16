@@ -10,7 +10,7 @@ function Login() {
                 <TextInput type="text" id="fname" placeholder="Email" />
                 <TextInput type="text" id="fname" placeholder="Senha" />
                 <Button>Entrar</Button>
-                <Link href="/forgetpassword"> Deu alzhaimer, esqueci minha sala </Link>
+                <Link href="/forgetpassword"> Deu alzhaimer, esqueci minha senha </Link>
                 <Link href="/register"> Uau, preciso criar minha conta :D </Link>
             </Container>
             
