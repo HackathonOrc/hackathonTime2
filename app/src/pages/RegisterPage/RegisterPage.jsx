@@ -1,6 +1,12 @@
-import { Page, Container, TextInput, Title, Button, Link } from "./RegisterStyled";
 import { useContext, useEffect } from "react";
 import { UserContext } from '../../context/userContext';
+
+import { Link } from "../../styles/Link";
+import { Button } from "../../styles/Button";
+import { Page } from "../../styles/Page";
+import { Container } from "../../styles/Container";
+import { TextInput } from "../../styles/TextInput";
+import { Title } from "../../styles/Title";
 
 function Register() {
 

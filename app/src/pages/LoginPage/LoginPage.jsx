@@ -1,7 +1,13 @@
 import { useContext, useEffect } from "react";
-import { Page, Container, TextInput, Title, Link, Button } from "./LoginStyled";
-import orc_jump from "../../assets/orc-pose-jump 1.png"
 import { UserContext } from '../../context/userContext';
+
+import { Link } from "../../styles/Link";
+import { Button } from "../../styles/Button";
+import { Page } from "../../styles/Page";
+import { Container } from "../../styles/Container";
+import { TextInput } from "../../styles/TextInput";
+import { Title } from "../../styles/Title";
+import orc_jump from "../../assets/orc-pose-jump 1.png"
 
 
 function Login() {
