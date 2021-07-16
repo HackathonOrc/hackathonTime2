@@ -1,9 +1,4 @@
-import { Link } from "../../styles/Link";
-import { Button } from "../../styles/Button";
-import { Page } from "../../styles/Page";
-import { Container } from "../../styles/Container";
-import { TextInput } from "../../styles/TextInput";
-import { Title } from "../../styles/Title";
+import { Link, Button, Page, Container, TextInput, Title } from "../styles/GeneralStyles";
 
 function Register() {
     return (
