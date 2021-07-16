@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Register from "./pages/RegisterPage/RegisterPage";
+import Routes from './routes';
+
 import { UserProvider } from "./context/userContext"
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <Register />
+      <Routes />
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')

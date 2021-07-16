@@ -10,7 +10,7 @@ import { Title } from "../../styles/Title";
 
 function Register() {
 
-    const { user, recoverUser, register } = useContext(UserContext);
+    const { recoverUser, register } = useContext(UserContext);
 
     useEffect(() => {
         recoverUser()

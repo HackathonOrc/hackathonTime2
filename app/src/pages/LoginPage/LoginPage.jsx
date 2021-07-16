@@ -12,7 +12,7 @@ import orc_jump from "../../assets/orc-pose-jump 1.png"
 
 function Login() {
 
-    const { user, login, recoverUser } = useContext(UserContext);
+    const { login, recoverUser } = useContext(UserContext);
 
     useEffect(() => {
         recoverUser()

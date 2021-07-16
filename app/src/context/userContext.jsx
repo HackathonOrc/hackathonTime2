@@ -66,6 +66,23 @@ export function UserProvider({ children }) {
             console.error({ error: err.message })
         }
     }
+    
+    async function recoverUser() {
+        try {
+
+            if (!user) {
+                const tempUser = localStorage.getItem("user");
+                if (tempUser) {
+                    setUser(JSON.parse(tempUser));
+                    console.log({ recuperado: JSON.parse(tempUser) });
+                    fowardpage();
+                }
+            }
+
+        } catch (err) {
+            console.error({ error: err.message })
+        }
+    }
 
     async function register(name, userName, email, password, confirmatePassword) {
         try {
@@ -106,6 +123,7 @@ export function UserProvider({ children }) {
             login,
             recoverUser,
             register,
+            logout,
         }}>
             {children}
         </UserContext.Provider>

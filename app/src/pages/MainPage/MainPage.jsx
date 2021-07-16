@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext, useEffect } from "react";
 import { ThemeProvider } from 'styled-components'
+import { UserContext } from '../../context/userContext';
 
 import usePersistedState from '../../utils/usePersistedState'
 
 import dark from '../../styles/themes/dark'
 import light from '../../styles/themes/light'
-
-
 import { Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, PostCard, CreatePostCard, Image } from "./MainStyled";
-
 import exitIcon from '../../assets/exitIcon.svg';
 
 
 function MainPage() {
+
+    const { user, logout,recoverUser } = useContext(UserContext);
+
+    useEffect(() => {
+        recoverUser()
+        // eslint-disable-next-line 
+    }, [])
+
+
     const [theme, setTheme] = usePersistedState('theme', light);
     // const theme = light;
     const toggleTheme = () => {
@@ -24,9 +31,9 @@ function MainPage() {
             <Page>
                 <Sidebar>
                     <ProfileData>
-                        <h3 className='Name'> João Gabriel de Matos</h3>
+                        <h3 className='Name'>{user && user.name}</h3>
 
-                        <h4 className='userName'>@JongaMatos</h4>
+                        <h4 className='userName'>@{user && user.userName}</h4>
                     </ProfileData>
                     <ButtonContainer>
                         <ButtonOutlined onClick={toggleTheme}>
@@ -36,7 +43,7 @@ function MainPage() {
                             </span>
                         </ButtonOutlined>
 
-                        <ButtonOutlined>
+                        <ButtonOutlined onClick={()=>{logout()}}>
                             <Image src={exitIcon} alt="Sair" />
                             <span className="button-text">
                                 Sair
@@ -49,7 +56,7 @@ function MainPage() {
                 <Separator />
                 <CardsSection>
                     <CreatePostCard>
-                        <h3 className="userName">JongaMatos</h3>
+                        <h3 className="userName">{user && user.userName}</h3>
                         <input className='newPost' type="text" placeholder="Escreva aqui..." />
                         <button className="Post">POSTAR</button>
                     </CreatePostCard>
