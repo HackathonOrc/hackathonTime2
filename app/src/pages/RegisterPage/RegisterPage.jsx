@@ -10,12 +10,11 @@ import { Title } from "../../styles/Title";
 
 function Register() {
 
-    const { user, login, recoverUser, register } = useContext(UserContext);
+    const { user, recoverUser, register } = useContext(UserContext);
 
     useEffect(() => {
-
         recoverUser()
-
+        // eslint-disable-next-line 
     }, [])
 
     return (

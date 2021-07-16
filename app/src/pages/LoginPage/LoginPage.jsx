@@ -15,9 +15,8 @@ function Login() {
     const { user, login, recoverUser } = useContext(UserContext);
 
     useEffect(() => {
-
         recoverUser()
-
+        // eslint-disable-next-line 
     }, [])
 
     return (
