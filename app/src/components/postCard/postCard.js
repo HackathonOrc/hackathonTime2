@@ -30,6 +30,11 @@ export const PostCardS = styled.div`
         font-weight: 400;
         font-size: 2rem;
 
+        ::placeholder,
+        ::-webkit-input-placeholder {
+            color: #70E864;
+        }
+
     }
 
     @media(max-width: 845px) {

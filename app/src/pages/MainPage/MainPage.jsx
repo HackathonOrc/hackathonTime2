@@ -1,19 +1,23 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ThemeProvider } from 'styled-components'
 import { UserContext } from '../../context/userContext';
 import { useHistory } from "react-router-dom";
 
 import usePersistedState from '../../utils/usePersistedState'
+import api from '../../services/api'
 
 import dark from '../../styles/themes/dark'
 import light from '../../styles/themes/light'
-import { Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, PostCard, CreatePostCard, Image } from "./MainStyled";
+import { Logo, Page, CardsSection, Separator, Sidebar, ButtonContainer, ButtonOutlined, ProfileData, CreatePostCard, Image } from "./MainStyled";
+import PostCard from '../../components/postCard/postCard.jsx'
 import exitIcon from '../../assets/exitIcon.svg';
 
 
 function MainPage() {
 
+    const [theme, setTheme] = usePersistedState('theme', light);
     const { user, logout, recoverUser } = useContext(UserContext);
+    const [posts, setPosts] = useState([]);
     const history = useHistory();
 
 
@@ -23,18 +27,45 @@ function MainPage() {
             recoverUser()
         if (!user && !localStorage.getItem("user"))
             history.push('/login')
+        // if (user)
+        //     getPosts();
+
         // eslint-disable-next-line 
     }, [user])
 
+    useEffect(() => {
+        if (user)
+            getPosts();
 
-    const [theme, setTheme] = usePersistedState('theme', light);
-    // const theme = light;
+        // eslint-disable-next-line 
+    }, [postPost])
+
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light)
     }
 
-    // if (!user && !localStorage.getItem("user"))
-    //     history.push('/login')
+
+    async function getPosts() {
+        try {
+            const res = await api.get('/post/all');
+            setPosts(res.data.posts);
+            // console.log(res.data.posts);
+        } catch (error) { }
+    }
+
+    async function postPost() {
+        try {
+
+            const res = await api.post('/post/create', {
+                userName: user.userName,
+                content: document.getElementById('new_post').value,
+            });
+
+            document.getElementById('new_post').value = '';
+        } catch (error) { }
+
+    }
+
 
     return (
 
@@ -68,52 +99,22 @@ function MainPage() {
                 <CardsSection>
                     <CreatePostCard>
                         <h3 className="userName">{user && user.userName}</h3>
-                        <input className='newPost' type="text" placeholder="Escreva aqui..." />
-                        <button className="Post">POSTAR</button>
+                        <input className='newPost' type="text" id="new_post" placeholder="Escreva aqui..." />
+                        <button className="Post" onClick={postPost}>POSTAR</button>
                     </CreatePostCard>
-                    <PostCard>
-                        <h3 className="userName">M-Lee</h3>
 
-                        <h4 className="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id consequat nibh. Morbi sed volutpat tellus. Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus. Pellentesque ac urna tellus.
-                        </h4>
-                    </PostCard>
-                    <PostCard>
-                        <h3 className="userName">Batizta</h3>
-                        <h4 className="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id consequat nibh. Morbi sed volutpat tellus. Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus.                        </h4>
-                    </PostCard>
-                    <PostCard>
-                        <h3 className="userName">PMbalboa10</h3>
-                        <h4 className="content">
-                            Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus. Pellentesque ac urna tellus.                        </h4>
-                    </PostCard>
-                    <PostCard>
-                        <h3 className="userName">Neithan</h3>
-                        <h4 className="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id consequat nibh. Morbi sed volutpat tellus. Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus. Pellentesque ac urna tellus.
-                        </h4>
+                    {posts && posts.map((post, index) => {
+                        return (<PostCard key={index} post={post} />)
+                    })
+                    }
 
-                    </PostCard>
-                    <PostCard>
-                        <h3 className="userName">SemLena</h3>
-
-                        <h4 className="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id consequat nibh. Morbi sed volutpat tellus. Curabitur interdum congue leo, in semper nibh scelerisque in. Phasellus id porttitor eros. Donec ac lorem vel sapien aliquet faucibus. Pellentesque ac urna tellus.
-                        </h4>
-                    </PostCard>
                 </CardsSection>
 
                 <Logo src={theme.logo} />
             </Page>
         </ThemeProvider>
     )
-    // else
-    // return (
-    //     <>
-    //         {history.push('/login')}
-    //     </>
-    // )
+
 }
 
 export default MainPage;

@@ -1,13 +1,18 @@
 import React from 'react'
-import { PostCardS } from './postCard';
+import { PostCardS as Card } from './postCard';
 
 function PostCard(props) {
+
+    const post = props.post;
+
     return (
-        <PostCardS>
-            <h3 className="userName"> {props.userName} </h3>
-            <h4 className="content"> {props.content} </h4>
-        </PostCardS>
+        <Card>
+
+            <h3 className="userName"> {post.userName} </h3>
+
+            <h4 className="content"> {post.content} </h4>
+        </Card>
     )
 }
 
-export default PostCard
+export default PostCard;

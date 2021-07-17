@@ -1,5 +1,4 @@
 import { Link, Button, Page, Container, TextInput, Title } from "../styles/GeneralStyles";
-import orc_jump from "../assets/orc-pose-jump 1.png"
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../context/userContext';
