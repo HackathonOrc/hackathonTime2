@@ -49,7 +49,7 @@ export function UserProvider({ children }, props) {
             }
 
         } catch (err) {
-            console.error({ error: err.message })
+            window.alert("Email ou Senha inválidos");
         }
     }
 
@@ -66,7 +66,7 @@ export function UserProvider({ children }, props) {
             }
 
         } catch (err) {
-            console.error({ error: err.message })
+            // console.error({ error: err.message })
         }
     }
 
@@ -82,18 +82,20 @@ export function UserProvider({ children }, props) {
                 });
 
                 if (res.data.user) {
-                    console.log({ message: "usuario criado" })
+                    // console.log({ message: "usuario criado" })
                     saveUser(res.data.user, res.data.token);
 
                 }
             }
             else {
+                window.alert("Senhas diferentes");
                 console.log({ message: "Senhas diferentes" })
             }
 
 
         } catch (err) {
-            console.error({ error: err.message })
+
+            window.alert(err.response.data.message);
         }
     }
 

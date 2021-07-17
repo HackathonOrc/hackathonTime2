@@ -21,9 +21,8 @@ function MainPage() {
 
         if (!user)
             recoverUser()
-
-
-
+        if (!user && !localStorage.getItem("user"))
+            history.push('/login')
         // eslint-disable-next-line 
     }, [user])
 
@@ -34,8 +33,8 @@ function MainPage() {
         setTheme(theme.title === 'light' ? dark : light)
     }
 
-    if (!user && !localStorage.getItem("user"))
-        return (<>{history.push('/login')}</>)
+    // if (!user && !localStorage.getItem("user"))
+    //     history.push('/login')
 
     return (
 
