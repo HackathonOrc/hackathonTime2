@@ -1,16 +1,16 @@
 import React, { createContext, useState } from 'react';
 import api from "../services/api";
+// import isTokenValid from "../utils/auth"
+
 
 
 export const UserContext = createContext({});
 
-export function UserProvider({ children }) {
+export function UserProvider({ children }, props) {
+
 
     const [user, setUser] = useState();
 
-    async function fowardpage() {
-        console.log({ message: "enviado para a proxima pagina" });
-    }
     async function saveUser(userData, tempToken) {
 
         setUser({
@@ -29,11 +29,15 @@ export function UserProvider({ children }) {
                 email: userData.email,
                 token: tempToken
             }
+
         ));
+
+
     }
 
 
     async function login(password, email) {
+
         try {
             const res = await api.post("/user/login", {
                 email,
@@ -41,8 +45,8 @@ export function UserProvider({ children }) {
             });
 
             if (res.data.user) {
-                saveUser(res.data.user, res.data.token);
-                fowardpage();
+                await saveUser(res.data.user, res.data.token);
+
             }
 
         } catch (err) {
@@ -58,7 +62,6 @@ export function UserProvider({ children }) {
                 if (tempUser) {
                     setUser(JSON.parse(tempUser));
                     console.log({ recuperado: JSON.parse(tempUser) });
-                    fowardpage();
                 }
             }
 
@@ -66,23 +69,7 @@ export function UserProvider({ children }) {
             console.error({ error: err.message })
         }
     }
-    
-    async function recoverUser() {
-        try {
 
-            if (!user) {
-                const tempUser = localStorage.getItem("user");
-                if (tempUser) {
-                    setUser(JSON.parse(tempUser));
-                    console.log({ recuperado: JSON.parse(tempUser) });
-                    fowardpage();
-                }
-            }
-
-        } catch (err) {
-            console.error({ error: err.message })
-        }
-    }
 
     async function register(name, userName, email, password, confirmatePassword) {
         try {
@@ -96,8 +83,8 @@ export function UserProvider({ children }) {
 
                 if (res.data.user) {
                     console.log({ message: "usuario criado" })
-                    // login(res.data.user.password, res.data.user.email)
                     saveUser(res.data.user, res.data.token);
+
                 }
             }
             else {
@@ -113,8 +100,6 @@ export function UserProvider({ children }) {
     async function logout() {
         localStorage.removeItem("user");
         setUser(undefined);
-
-
     }
 
     return (

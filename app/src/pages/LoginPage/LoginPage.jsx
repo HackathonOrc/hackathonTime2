@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { UserContext } from '../../context/userContext';
 
 import { Link } from "../../styles/Link";
@@ -12,12 +13,17 @@ import orc_jump from "../../assets/orc-pose-jump 1.png"
 
 function Login() {
 
-    const { login, recoverUser } = useContext(UserContext);
+    const { user, login, recoverUser } = useContext(UserContext);
+    const history = useHistory();
 
     useEffect(() => {
-        recoverUser()
+        if (!user)
+            recoverUser()
+        else
+            history.push('/');
+
         // eslint-disable-next-line 
-    }, [])
+    }, [user])
 
     return (
 

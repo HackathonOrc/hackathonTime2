@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from '../../context/userContext';
+import { useHistory } from "react-router-dom";
 
 import { Link } from "../../styles/Link";
 import { Button } from "../../styles/Button";
@@ -10,12 +11,18 @@ import { Title } from "../../styles/Title";
 
 function Register() {
 
-    const { recoverUser, register } = useContext(UserContext);
+    const { user, recoverUser, register } = useContext(UserContext);
+    const history = useHistory();
+
 
     useEffect(() => {
-        recoverUser()
+        if (!user)
+            recoverUser()
+        else
+            history.push('/');
+
         // eslint-disable-next-line 
-    }, [])
+    }, [user]);
 
     return (
         <Page>

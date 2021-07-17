@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { ThemeProvider } from 'styled-components'
 import { UserContext } from '../../context/userContext';
+import { useHistory } from "react-router-dom";
 
+// import isTokenValid from "../../utils/auth"
 import usePersistedState from '../../utils/usePersistedState'
 
 import dark from '../../styles/themes/dark'
@@ -12,12 +14,20 @@ import exitIcon from '../../assets/exitIcon.svg';
 
 function MainPage() {
 
-    const { user, logout,recoverUser } = useContext(UserContext);
+    const { user, logout, recoverUser } = useContext(UserContext);
+    const history = useHistory();
+
 
     useEffect(() => {
-        recoverUser()
+
+        if (!user && !localStorage.getItem("user"))
+            history.push('/login');
+        else
+            if (!user)
+                recoverUser()
+
         // eslint-disable-next-line 
-    }, [])
+    }, [user])
 
 
     const [theme, setTheme] = usePersistedState('theme', light);
@@ -43,7 +53,7 @@ function MainPage() {
                             </span>
                         </ButtonOutlined>
 
-                        <ButtonOutlined onClick={()=>{logout()}}>
+                        <ButtonOutlined onClick={() => { logout() }}>
                             <Image src={exitIcon} alt="Sair" />
                             <span className="button-text">
                                 Sair
