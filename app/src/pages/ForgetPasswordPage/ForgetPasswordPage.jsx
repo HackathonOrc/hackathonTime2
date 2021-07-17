@@ -18,7 +18,7 @@ function ForgetPassword() {
                 <Button>
                     Pronto!
                 </Button>
-                <Link href="/login">Opa! Lembrei minha senha, esquece hihi!</Link>
+                <Link href="/login">Lembrei minha senha</Link>
             </Container>
         </Page>
     );

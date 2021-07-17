@@ -46,7 +46,7 @@ function Register() {
                 >
                     Cadastrar
                 </Button>
-                <Link href="/login">Uau, esqueci que já tenho uma conta :P</Link>
+                <Link href="/login">Tenho uma conta</Link>
             </Container>
 
         </Page>

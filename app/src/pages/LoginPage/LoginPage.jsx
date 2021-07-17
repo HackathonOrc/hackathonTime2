@@ -42,8 +42,8 @@ function Login() {
                 >
                     Entrar
                 </Button>
-                <Link href="/forgetpassword"> Deu alzhaimer, esqueci minha senha </Link>
-                <Link href="/register"> Uau, preciso criar minha conta :D </Link>
+                <Link href="/forgetpassword"> Esqueci minha senha </Link>
+                <Link href="/register"> Criar minha conta </Link>
             </Container>
 
         </Page>

@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components'
 import { UserContext } from '../../context/userContext';
 import { useHistory } from "react-router-dom";
 
-import isTokenValid from "../../utils/auth"
 import usePersistedState from '../../utils/usePersistedState'
 
 import dark from '../../styles/themes/dark'
