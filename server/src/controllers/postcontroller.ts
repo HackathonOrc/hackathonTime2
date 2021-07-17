@@ -27,7 +27,7 @@ export default class PostController {
         try {
             const posts = await Post.find({});
 
-            return res.status(200).send({ posts });
+            return res.status(200).send({ posts: posts.reverse() });
         } catch (error) {
             return res.status(400).send({ error: error.message });
         }
