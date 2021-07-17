@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { UserContext } from '../../context/userContext';
 import { useHistory } from "react-router-dom";
 
-// import isTokenValid from "../../utils/auth"
+import isTokenValid from "../../utils/auth"
 import usePersistedState from '../../utils/usePersistedState'
 
 import dark from '../../styles/themes/dark'
@@ -20,11 +20,10 @@ function MainPage() {
 
     useEffect(() => {
 
-        if (!user && !localStorage.getItem("user"))
-            history.push('/login');
-        else
-            if (!user)
-                recoverUser()
+        if (!user)
+            recoverUser()
+
+
 
         // eslint-disable-next-line 
     }, [user])
@@ -35,6 +34,10 @@ function MainPage() {
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light)
     }
+
+    if (!user && !localStorage.getItem("user"))
+        return (<>{history.push('/login')}</>)
+
     return (
 
         <ThemeProvider theme={theme}>
@@ -107,6 +110,12 @@ function MainPage() {
             </Page>
         </ThemeProvider>
     )
+    // else
+    // return (
+    //     <>
+    //         {history.push('/login')}
+    //     </>
+    // )
 }
 
 export default MainPage;

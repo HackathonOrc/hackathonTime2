@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import api from "../services/api";
-// import isTokenValid from "../utils/auth"
+import isTokenValid from "../utils/auth"
 
 
 
@@ -46,7 +46,6 @@ export function UserProvider({ children }, props) {
 
             if (res.data.user) {
                 await saveUser(res.data.user, res.data.token);
-
             }
 
         } catch (err) {
@@ -59,10 +58,11 @@ export function UserProvider({ children }, props) {
 
             if (!user) {
                 const tempUser = localStorage.getItem("user");
-                if (tempUser) {
+
+                if (await isTokenValid(JSON.parse(localStorage.getItem("user")).token))
                     setUser(JSON.parse(tempUser));
-                    console.log({ recuperado: JSON.parse(tempUser) });
-                }
+                else
+                    localStorage.removeItem("user");
             }
 
         } catch (err) {
@@ -115,5 +115,3 @@ export function UserProvider({ children }, props) {
     )
 }
 
-
-{/*  */ }
