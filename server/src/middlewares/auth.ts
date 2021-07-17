@@ -8,6 +8,15 @@ interface Idata {
     exp: number
 }
 export default class Auth {
+
+    tokenGenerator = async (_id: string) => {
+
+        const token = jwt.sign({ id: _id }, authConfig.secret, { expiresIn: 86400 });
+        // const token = jwt.sign({ id: _id }, authConfig.secret, { expiresIn: 1 });
+
+        return token;
+    }
+
     tokenDecoder = async (token: string) => {
         try {
             const data = await jwt.verify(token, authConfig.secret);
@@ -15,11 +24,6 @@ export default class Auth {
         } catch (error) {
             return undefined;
         }
-    }
-    tokenGenerator = async (_id: string) => {
-
-        const token = jwt.sign({ id: _id }, authConfig.secret, { expiresIn: 86400 });
-        return token;
     }
 
     autenticate = async (req: Request, res: Response, next: () => void) => {
@@ -36,7 +40,7 @@ export default class Auth {
                 res.status(401).send({ message: "Token não informado" });
 
             const data = await jwt.verify(token, authConfig.secret);
-            
+
             req.userId = (<Idata>data).id;
 
             next();

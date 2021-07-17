@@ -35,7 +35,7 @@ export default class UserController {
             });
 
         } catch (error) {
-            console.log(error);
+            console.log({ error });
             res
                 .status(400)
                 .json({
@@ -97,6 +97,7 @@ export default class UserController {
         }
 
     }
+    
 
     forgotPassword = async (req: Request, res: Response) => {
         const { email } = req.body;
