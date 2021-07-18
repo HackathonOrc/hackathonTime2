@@ -25,10 +25,7 @@ function MainPage() {
 
         if (!user)
             recoverUser()
-        if (!user && !localStorage.getItem("user"))
-            history.push('/login')
-        // if (user)
-        //     getPosts();
+        
 
         // eslint-disable-next-line 
     }, [user])
@@ -64,6 +61,11 @@ function MainPage() {
         } catch (error) { }
 
     }
+    if (!user && !localStorage.getItem("user"))
+        return (
+            <>
+            {history.push('/login')}
+            </>)
 
 
     return (
