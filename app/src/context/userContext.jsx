@@ -64,7 +64,7 @@ export function UserProvider({ children }, props) {
   async function register(name, userName, email, password, confirmatePassword) {
     try {
       if (password === confirmatePassword) {
-        const res = await api.post("/user/register", {
+        await api.post("/user/register", {
           name,
           userName,
           email,

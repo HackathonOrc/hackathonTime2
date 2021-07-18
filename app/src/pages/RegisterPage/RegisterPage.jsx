@@ -19,13 +19,13 @@ function Register() {
     // eslint-disable-next-line
   }, [user]);
 
-  function clearInputs() {
-    document.getElementById("name").value=''
-      document.getElementById("userName").value=''
-      document.getElementById("email").value=''
-      document.getElementById("password").value=''
-      document.getElementById("cPassword").value=''
-  }
+  // function clearInputs() {
+  //   document.getElementById("name").value=''
+  //     document.getElementById("userName").value=''
+  //     document.getElementById("email").value=''
+  //     document.getElementById("password").value=''
+  //     document.getElementById("cPassword").value=''
+  // }
 
   return (
     <Page>
@@ -49,7 +49,7 @@ function Register() {
               document.getElementById("password").value,
               document.getElementById("cPassword").value
             );
-            clearInputs();
+            // clearInputs();
 
           }}
         >
