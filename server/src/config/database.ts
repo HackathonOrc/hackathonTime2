@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+require('dotenv').config();
 
 const databaseConnect = async () => {
     try {
