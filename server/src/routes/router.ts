@@ -10,12 +10,12 @@ router.use('/user', userRoutes);
 
 router.use('/post', postRoutes);
 
-router.get('/register', function(req, res) {
-    res.send('Cadastrar');
-});
+// router.get('/register', function(req, res) {
+//     res.send('Cadastrar');
+// });
 
-router.get('/login', function(req, res) {
-    res.send('Entrar');
-});
+// router.get('/login', function(req, res) {
+//     res.send('Entrar');
+// });
 
 export default router;

@@ -55,8 +55,7 @@ function MainPage() {
 
     async function postPost() {
         try {
-
-            const res = await api.post('/post/create', {
+            await api.post('/post/create', {
                 userName: user.userName,
                 content: document.getElementById('new_post').value,
             });
@@ -103,8 +102,8 @@ function MainPage() {
                         <button className="Post" onClick={postPost}>POSTAR</button>
                     </CreatePostCard>
 
-                    {posts && posts.map((post, index) => {
-                        return (<PostCard key={index} post={post} />)
+                    {posts && posts.map((post) => {
+                        return (<PostCard key={post._id} post={post} theme={theme} />)
                     })
                     }
 
