@@ -24,4 +24,12 @@ userRoutes.post('/login', (req: Request, res: Response) => {
     userController.login(req, res);
 });
 
+userRoutes.post('/forgot_password', (req: Request, res: Response) => {
+    userController.forgotPassword(req, res);
+});
+
+userRoutes.post('/reset_password', (req: Request, res: Response) => {
+    userController.resetPassword(req, res);
+});
+
 export default userRoutes;

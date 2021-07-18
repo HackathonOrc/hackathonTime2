@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import * as bcrypt from "bcryptjs";
+const crypto = require('crypto');
+import { transporter, mailOptions } from '../modules/mailer';
+import { forgotPasswordEmail } from '../resources/mail/templates';
 
 import Auth from '../middlewares/auth';
 
 import User from "../models/user";
-
 
 const auth = new Auth();
 
@@ -95,6 +97,69 @@ export default class UserController {
         }
 
     }
-    
+
+
+    forgotPassword = async (req: Request, res: Response) => {
+        const { email } = req.body;
+
+        try {
+            const user = await User.findOne({ email });
+
+            if (!user)
+                return res.status(404).json({ message: "Usuario não encontrado" });
+
+            const token = crypto.randomBytes(20).toString('hex');
+
+            const now = new Date();
+            now.setHours(now.getHours() + 1);
+
+            await User.findByIdAndUpdate(user.id, {
+                '$set': {
+                    passwordResetToken: token,
+                    passwordResetExpires: now
+                }
+            });
+
+            transporter.sendMail(mailOptions(user.email, token, user.userName, forgotPasswordEmail), (error: Error) => {
+                console.log({ error: error.message });
+                return res.status(400).send({ error: error.message });
+            });
+            console.log("enviado");
+            return res.status(200).send({ message: "email enviado" });
+
+
+        } catch (err) {
+            res.status(400).send({ error: 'Error on forgot password, try again' });
+        }
+    };
+
+    resetPassword = async (req: Request, res: Response) => {
+        const { userName, token, password } = req.body;
+
+        try {
+            const user = await User.findOne({ userName })
+                .select('+passwordResetToken passwordResetExpires');
+
+            if (!user)
+                return res.status(404).json({ message: "Usuario não encontrado" });
+
+            if (token !== user.passwordResetToken)
+                return res.status(404).json({ message: "Token invalido" });
+
+            const now = new Date();
+            if (now > user.passwordResetExpires)
+                return res.status(404).json({ message: "Token expirado" });
+
+
+            user.password = password;
+            user.passwordResetToken = '';
+            await user.save();
+
+            res.send();
+
+        } catch (err) {
+            res.status(400).send({ error: 'Cannot reset password' })
+        }
+    };
 
 }
