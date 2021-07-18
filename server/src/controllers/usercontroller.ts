@@ -119,7 +119,6 @@ export default class UserController {
                     passwordResetExpires: now
                 }
             });
-            console.log({ token });
 
             transporter.sendMail(mailOptions(user.email, token, user.userName, forgotPasswordEmail), (error: Error) => {
                 console.log({ error: error.message });
