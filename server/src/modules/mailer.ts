@@ -8,14 +8,14 @@ export const transporter = nodemailer.createTransport({
   }
 });
 
-export const mailOptions = (email: string, token: string, template: (token: string) => string) => {
+export const mailOptions = (email: string, token: string, userName: string, template: (token: string, userName: string) => string) => {
 
   return {
 
     from: 'twork.noresponse@gmail.com',
     to: email,
     subject: 'Recuperação de senha',
-    html: template(token)
+    html: template(token, userName)
 
   }
 };

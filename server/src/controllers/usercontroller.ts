@@ -121,7 +121,7 @@ export default class UserController {
             });
             console.log({ token });
 
-            transporter.sendMail(mailOptions(user.email, token, forgotPasswordEmail), (error: Error) => {
+            transporter.sendMail(mailOptions(user.email, token, user.userName, forgotPasswordEmail), (error: Error) => {
                 console.log({ error: error.message });
                 return res.status(400).send({ error: error.message });
             });
