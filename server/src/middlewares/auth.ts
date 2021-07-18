@@ -34,7 +34,7 @@ export default class Auth {
 
       const data = await jwt.verify(token, authConfig.secret);
 
-      req.params.userId = (<Idata>data).id;
+      req.userId = (<Idata>data).id;
 
       next();
     } catch (error) {

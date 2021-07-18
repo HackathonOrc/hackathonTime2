@@ -9,6 +9,7 @@ export const transporter = nodemailer.createTransport({
 });
 
 export const mailOptions = (
+  subject: string,
   email: string,
   token: string,
   userName: string,
@@ -17,7 +18,7 @@ export const mailOptions = (
   return {
     from: "twork.noresponse@gmail.com",
     to: email,
-    subject: "Recuperação de senha",
+    subject: subject,
     html: template(token, userName),
   };
 };

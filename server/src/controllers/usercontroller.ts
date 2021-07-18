@@ -2,7 +2,10 @@ import { Request, Response } from "express";
 import * as bcrypt from "bcryptjs";
 const crypto = require("crypto");
 import { transporter, mailOptions } from "../modules/mailer";
-import { forgotPasswordEmail } from "../resources/mail/templates";
+import {
+  forgotPasswordEmail,
+  validateEmail,
+} from "../resources/mail/templates";
 
 import Auth from "../middlewares/auth";
 
@@ -28,16 +31,49 @@ export default class UserController {
       const user = await User.create(req.body);
       user.password = undefined;
 
-      return res.status(200).send({
-        user,
-        token: await auth.tokenGenerator(user._id),
-      });
+      transporter.sendMail(
+        mailOptions(
+          "Validação de conta",
+          user.email,
+          user.validateEmailToken,
+          user.userName,
+          validateEmail
+        ),
+        (error: Error) => {
+          console.log({ error: error.message });
+          return res.status(400).send({ error: error.message });
+        }
+      );
+
+      return res.status(200).send({ message: "Email de confirmação enviado" });
     } catch (error) {
       console.log({ error });
       res.status(400).json({
         message:
           "Falha ao criar usuário, talvez você tenha colocado um e-mail já em uso!",
       });
+    }
+  };
+  validateUser = async (req: Request, res: Response) => {
+    const { userName, token } = req.body;
+    try {
+      const user = await User.findOne({ userName }).select(
+        "+validateEmailToken isValidated"
+      );
+      if (!user)
+        return res.status(404).send({ message: "Conta não encontrada" });
+
+      if (user.isValidated)
+        return res.status(400).send({ message: "Email ja validado" });
+
+      if (user.validateEmailToken !== token)
+        return res.status(400).send({ message: "Token invalido" });
+
+      await user.update({ isValidated: true });
+
+      return res.status(200).send({ message: "Email validado com sucesso" });
+    } catch (error) {
+      return res.status(400).send({ error: error.message });
     }
   };
 
@@ -65,18 +101,21 @@ export default class UserController {
     const { email, password } = req.body;
 
     try {
-      const user = await User.findOne({ email }).select("+password");
+      const user = await User.findOne({ email }).select(
+        "+ password isValidated"
+      );
 
       if (!user)
         return res.status(404).json({ message: "Usuario não encontrado" });
 
+      if (!user.isValidated)
+        return res.status(400).send({ message: "Email ainda não verificado" });
+
       if (!(await bcrypt.compare(password, user.password)))
         return res.status(400).json({ erro: "senha invalida" });
 
-      user.password = undefined;
-
       return res.status(200).send({
-        user,
+        user: await User.findOne({ email }),
         token: await auth.tokenGenerator(user._id),
       });
     } catch (error) {
@@ -106,16 +145,21 @@ export default class UserController {
       });
 
       transporter.sendMail(
-        mailOptions(user.email, token, user.userName, forgotPasswordEmail),
+        mailOptions(
+          "Recuperação de senha.",
+          user.email,
+          token,
+          user.userName,
+          forgotPasswordEmail
+        ),
         (error: Error) => {
           console.log({ error: error.message });
           return res.status(400).send({ error: error.message });
         }
       );
-      console.log("enviado");
       return res.status(200).send({ message: "email enviado" });
     } catch (err) {
-      res.status(400).send({ error: "Error on forgot password, try again" });
+      res.status(400).send({ error: "Error em esquecer senha, tente novamente" });
     }
   };
 
@@ -138,12 +182,13 @@ export default class UserController {
         return res.status(404).json({ message: "Token expirado" });
 
       user.password = password;
-      user.passwordResetToken = "";
+      // user.passwordResetToken = '';
+      user.passwordResetExpires = now;
       await user.save();
 
       res.send();
     } catch (err) {
-      res.status(400).send({ error: "Cannot reset password" });
+      res.status(400).send({ error: "Não foi possível resetar senha" });
     }
   };
 }
