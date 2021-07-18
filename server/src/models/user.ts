@@ -1,5 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
-
+const crypto = require('crypto');
 import * as bcrypt from "bcryptjs";
 
 
@@ -8,6 +8,8 @@ interface IUser extends Document {
     name: string,
     email: string,
     password: string,
+    isValidated: boolean,
+    validateEmailToken: string,
     passwordResetToken: string,
     passwordResetExpires: Date,
 }
@@ -30,11 +32,22 @@ const UserSchema = new Schema<IUser>({
         required: true,
         select: false
     },
-    passwordResetToken:{
+    isValidated: {
+        type: Boolean,
+        default: false,
+        select: false
+
+    },
+    validateEmailToken: {
+        type: String,
+        default: crypto.randomBytes(20).toString('hex'),
+        select: false
+    },
+    passwordResetToken: {
         type: String,
         select: false
     },
-    passwordResetExpires:{
+    passwordResetExpires: {
         type: Date,
         select: false
     }

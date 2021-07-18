@@ -12,6 +12,10 @@ userRoutes.post('/register', (req: Request, res: Response) => {
     userController.createUser(req, res);
 });
 
+userRoutes.put('/validate', (req: Request, res: Response) => {
+    userController.validateUser(req, res);
+});
+
 userRoutes.get('/all', (req: Request, res: Response) => {
     userController.getAllUsers(req, res);
 });
