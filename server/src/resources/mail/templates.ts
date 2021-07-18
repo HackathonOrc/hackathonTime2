@@ -7,10 +7,10 @@ export const forgotPasswordEmail = (token: string, userName: string) => {
 
 
 
-export const validateEmail = (token:string) => {
-    const url = "http://localhost:3000/";
+export const validateEmail = (token: string, userName: string) => {
+    const url = "http://localhost:3000/validate";
 
     return (`<p>
-                Token de validação de email:${token}
+    Para Validar sua conta, clique neste <a href="${url}/${userName}/${token}">link</a> .
             </p>`)
 }

@@ -29,15 +29,14 @@ export default class UserController {
             const user = await User.create(req.body);
             user.password = undefined;
 
-            transporter.sendMail(mailOptions(user.email, user.validateEmailToken, user.userName, validateEmail), (error: Error) => {
+            transporter.sendMail(mailOptions("Validação de conta", user.email, user.validateEmailToken, user.userName, validateEmail), (error: Error) => {
                 console.log({ error: error.message });
                 return res.status(400).send({ error: error.message });
             });
-            console.log("enviado");
             // return res.status(200).send({ message: "email enviado" });
 
-            console.log({ user })
-            return res.status(200).send({message:"Email de confirmação enviado"});
+
+            return res.status(200).send({ message: "Email de confirmação enviado" });
 
         } catch (error) {
             console.log({ error });
@@ -106,23 +105,25 @@ export default class UserController {
         const { email, password } = req.body;
 
         try {
-            const user = await User.findOne({ email }).select('+password isValidated');
+            const user = await User.findOne({ email })
+                .select('+ password isValidated');
+            // console.log({ user });
 
             if (!user)
                 return res.status(404).json({ message: "Usuario não encontrado" });
 
             if (!user.isValidated)
-                return res.status(400).json({ message: "Email ainda não verificado" });
+                return res.status(400).send({ message: "Email ainda não verificado" });
 
 
             if (!await bcrypt.compare(password, user.password))
                 return res.status(400).json({ erro: "senha invalida" });
 
-            user.password = undefined;
-            user.isValidated = undefined;
-
+            // user.password = undefined;
+            // user.isValidated = undefined;
+            // console.log({ user });
             return res.status(200).send({
-                user,
+                user: await User.findOne({ email }),
                 token: await auth.tokenGenerator(user._id)
             });
 
@@ -154,11 +155,11 @@ export default class UserController {
                 }
             });
 
-            transporter.sendMail(mailOptions(user.email, token, user.userName, forgotPasswordEmail), (error: Error) => {
+            transporter.sendMail(mailOptions("Recuperação de senha.", user.email, token, user.userName, forgotPasswordEmail), (error: Error) => {
                 console.log({ error: error.message });
                 return res.status(400).send({ error: error.message });
             });
-            console.log("enviado");
+            // console.log("enviado");
             return res.status(200).send({ message: "email enviado" });
 
 

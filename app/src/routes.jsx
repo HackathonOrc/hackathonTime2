@@ -5,6 +5,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import Login from "./pages/LoginPage/LoginPage";
 import ForgotPassword from "./pages/ForgetPasswordPage/ForgetPasswordPage";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
+import validate from './services/validateSender'
 
 const Routes = () => {
   return (
@@ -16,6 +17,10 @@ const Routes = () => {
         <Route path="/forgetpassword" component={ForgotPassword} />
         <Route path="/recover/:userName/:token" component={RecoverPassword} />
         <Route path="/recover/" component={RecoverPassword} />
+        <Route path="/validate/:userName/:token" component={validate} />
+        <Route path="/validate/" component={validate} />
+
+
       </Switch>
     </Router>
   );
