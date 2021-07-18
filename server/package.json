@@ -21,7 +21,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb-client-encryption": "^1.2.6",
     "mongoose": "^5.12.13",
-    "netlify-lambda": "^2.0.11"
+    "netlify-lambda": "^2.0.11",
+    "nodemailer": "^6.6.2",
+    "nodemailer-express-handlebars": "^4.0.0"
   },
   "scripts": {
     "build": "netlify-lambda build src",
