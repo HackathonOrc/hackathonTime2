@@ -1,31 +1,21 @@
-const path = require('path');
 const nodemailer = require('nodemailer');
-const hbs = require('nodemailer-express-handlebars');
 
-const {host, port, user, pass} = require("../config/mail.json");
-
-const transport = nodemailer.createTransport({
-    host,
-    port,
-    auth: {
-      user,
-      pass
-    }
+export const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'twork.noresponse@gmail.com',
+    pass: 'twork123'
+  }
 });
 
-transport.use('compile', hbs({
-    viewEngine: 'handlebars',
-    viewPath: path.resolve('./server/src/resources/mail/'),
-    extName: '.html'
-}));
+export const mailOptions = (email: string, token: string, template: (token: string) => string) => {
 
-transport.use('compile', hbs({
-    viewEngine: {
-      defaultLayout: undefined,
-      partialsDir: path.resolve('./server/src/resources/mail/')
-    },
-    viewPath: path.resolve('./server/src/resources/mail'),
-    extName: '.html',
-  }));
+  return {
 
-  module.exports = transport;
+    from: 'twork.noresponse@gmail.com',
+    to: email,
+    subject: 'Recuperação de senha',
+    html: template(token)
+
+  }
+};

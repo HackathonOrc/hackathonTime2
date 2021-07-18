@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import * as bcrypt from "bcryptjs";
 const crypto = require('crypto');
-const mailer = require('../modules/mailer');
+import { transporter, mailOptions } from '../modules/mailer';
+import { forgotPasswordEmail } from '../resources/mail/templates';
 
 import Auth from '../middlewares/auth';
 
 import User from "../models/user";
-
 
 const auth = new Auth();
 
@@ -97,7 +97,7 @@ export default class UserController {
         }
 
     }
-    
+
 
     forgotPassword = async (req: Request, res: Response) => {
         const { email } = req.body;
@@ -120,22 +120,17 @@ export default class UserController {
                 }
             });
 
-            console.log({ token, now })
+            try {
+                transporter.sendMail(mailOptions(user.email, token, forgotPasswordEmail), (error: Error) => {
+                    console.log({ error: error.message });
+                    return res.status(400).send({ error: error.message });
+                });
+                console.log("enviado");
+                return res.status(200).send({ message: "email enviado" });
+            } catch (error) {
+                return res.status(400).send({ error: error.message });
 
-            mailer.sendMail({
-                to: email,
-                from: 'jvtexbat@hotmail.com',
-                template: 'auth/forgot_password',
-                context: { token }
-            }, (err: Error) => {
-                if (err) {
-                    console.log(err.message)
-                    return res.status(400).send({ error: err.message });
-                    return res.status(400).send({ error: 'Cannot send forgot password email' });
-                }
-
-                return res.send();
-            })
+            }
 
         } catch (err) {
             res.status(400).send({ error: 'Error on forgot password, try again' });
