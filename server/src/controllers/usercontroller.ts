@@ -119,18 +119,15 @@ export default class UserController {
                     passwordResetExpires: now
                 }
             });
+            console.log({ token });
 
-            try {
-                transporter.sendMail(mailOptions(user.email, token, forgotPasswordEmail), (error: Error) => {
-                    console.log({ error: error.message });
-                    return res.status(400).send({ error: error.message });
-                });
-                console.log("enviado");
-                return res.status(200).send({ message: "email enviado" });
-            } catch (error) {
+            transporter.sendMail(mailOptions(user.email, token, forgotPasswordEmail), (error: Error) => {
+                console.log({ error: error.message });
                 return res.status(400).send({ error: error.message });
+            });
+            console.log("enviado");
+            return res.status(200).send({ message: "email enviado" });
 
-            }
 
         } catch (err) {
             res.status(400).send({ error: 'Error on forgot password, try again' });
@@ -138,10 +135,10 @@ export default class UserController {
     };
 
     resetPassword = async (req: Request, res: Response) => {
-        const { email, token, password } = req.body;
+        const { userName, token, password } = req.body;
 
         try {
-            const user = await User.findOne({ email })
+            const user = await User.findOne({ userName })
                 .select('+passwordResetToken passwordResetExpires');
 
             if (!user)
@@ -156,6 +153,7 @@ export default class UserController {
 
 
             user.password = password;
+            user.passwordResetToken = '';
             await user.save();
 
             res.send();

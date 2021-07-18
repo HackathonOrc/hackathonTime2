@@ -4,6 +4,7 @@ import Register from './pages/RegisterPage/RegisterPage';
 import MainPage from './pages/MainPage/MainPage';
 import Login from './pages/LoginPage/LoginPage';
 import ForgotPassword from './pages/ForgetPasswordPage/ForgetPasswordPage';
+import RecoverPassword from './pages/RecoverPassword';
 
 
 const Routes = () => {
@@ -16,6 +17,9 @@ const Routes = () => {
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />
                 <Route path='/forgetpassword' component={ForgotPassword} />
+                <Route path='/recover/:userName/:token' component={RecoverPassword} />
+                <Route path='/recover/' component={RecoverPassword} />
+
             </Switch>
 
         </Router >
