@@ -38,8 +38,12 @@ export function UserProvider({ children }, props) {
       if (res.data.user) {
         await saveUser(res.data.user, res.data.token);
       }
-    } catch (err) {
-      window.alert("Email ou Senha inválidos");
+    } catch (error) {
+      console.error(error.response.data);
+      if (error.response.data.message === "Email ainda não verificado")
+        window.alert("Email ainda não verificado");
+      else
+        window.alert("Email ou Senha inválidos");
     }
   }
 
@@ -60,17 +64,19 @@ export function UserProvider({ children }, props) {
   async function register(name, userName, email, password, confirmatePassword) {
     try {
       if (password === confirmatePassword) {
-        const res = await api.post("/user/register", {
+        await api.post("/user/register", {
           name,
           userName,
           email,
           password,
         });
 
-        if (res.data.user) {
-          // console.log({ message: "usuario criado" })
-          saveUser(res.data.user, res.data.token);
-        }
+        // if (res.data.user) {
+        //   // console.log({ message: "usuario criado" })
+        //   saveUser(res.data.user, res.data.token);
+        // }
+        window.alert('Email de confirmação enviado,verifique sua caixa de entrada.')
+
       } else {
         window.alert("Senhas diferentes");
         console.log({ message: "Senhas diferentes" });
