@@ -14,7 +14,8 @@ export default {
         detail: '#71E025',
         title: '#FAFAFA',
         text: '#FAFAFA',
-        buttonText: '#FAFAFA'
+        buttonText: '#FAFAFA',
+        date:'#70E864'
     },
     logo: logo,
     mode: {

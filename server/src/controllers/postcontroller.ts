@@ -34,16 +34,17 @@ export default class PostController {
     }
 
     deletePost = async (req: Request, res: Response) => {
+        // console.log({ id: req.body.id, userName: req.body.userName })
         try {
-            const checkPost = await Post.findOne({ _id: req.body.id });
+            const checkPost = await Post.findOne({ _id: req.params.id });
 
             if (!checkPost)
                 return res.status(404).json({ message: "Post não encontrado" });
 
-            if (checkPost.userName !== req.body.userName)
+            if (checkPost.userName !== req.params.userName)
                 return res.status(400).json({ message: "Usuário não habilitado" });
 
-            await Post.deleteOne({ _id: req.body.id });
+            await Post.deleteOne({ _id: req.params.id });
             return res.status(200).send({ message: "Post deletado" });
 
         } catch (error) {

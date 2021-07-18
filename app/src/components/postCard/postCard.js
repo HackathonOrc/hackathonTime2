@@ -2,6 +2,9 @@ import styled from "styled-components/macro";
 
 
 export const PostCardS = styled.div`
+    display: flex;
+    flex-direction: column;
+
     background: ${props => props.theme.colors.card};
     border-width: 1.5px;
     border-style: solid;
@@ -13,7 +16,19 @@ export const PostCardS = styled.div`
     width: 90%;
     margin-bottom: 6rem;
 
+    .header{    
+        display: flex;
+    }
+    .date{
+        /* align-self:flex-end; */
+        margin-left: auto;
+        margin-right:1rem;
+        margin-top: 1rem;
 
+        color:${props => props.theme.colors.date};
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
     .userName{
         color: ${props => props.theme.colors.title};
         margin-left: 8rem;
@@ -35,6 +50,21 @@ export const PostCardS = styled.div`
             color: #70E864;
         }
 
+    }
+    .delete{
+        cursor: pointer;
+        height: fit-content;
+
+        background: transparent;
+
+    }
+    .heart{
+        cursor: pointer;
+        
+
+        height: 40px;
+        align-self: flex-end;
+        margin-right: 2rem;
     }
 
     @media(max-width: 845px) {

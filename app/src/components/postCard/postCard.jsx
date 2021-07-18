@@ -9,11 +9,17 @@ import heart from '../../assets/heart.svg'
 function PostCard(props) {
 
     const post = props.post;
+    const date = new Date(post.date);
     const theme = props.theme;
     const { user } = useContext(UserContext);
 
-    const [like, setLike] = useState(post.likes.includes(user.userName));
+    const [like, setLike] = useState(false);
 
+    useEffect(() => {
+        if (user)
+            setLike(post.likes.includes(user.userName));
+        // eslint-disable-next-line
+    }, [])
 
     async function likeHandler() {
         try {
@@ -49,15 +55,38 @@ function PostCard(props) {
 
         }
     }
+    async function deleteHandler() {
+        try {
+            await api.delete(`/post/delete/${post._id}/${user.userName}`
+
+            )
+
+        } catch (error) {
+            console.error({ error: error.response.data.message })
+        }
+    }
+
+
 
     return (
         <Card>
+            {/* {console.log(typeof (date))} */}
+            <div className="header">
+                <h3 className="userName"> {post && post.userName} </h3>
+                <span className="date">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</span>
 
-            <h3 className="userName"> {post.userName} </h3>
-
+                {
+                    user && user.userName === post.userName ?
+                        <button className="delete" onClick={deleteHandler}>
+                            deletar
+                        </button>
+                        :
+                        <></>
+                }
+            </div>
             <h4 className="content"> {post.content} </h4>
 
-            {like ? <img src={theme.heartLike} alt="likeIcon" onClick={dislikeHandler} /> : <img src={heart} alt="likeIcon" onClick={likeHandler} />}
+            {like ? <img className='heart' src={theme.heartLike} alt="likeIcon" onClick={dislikeHandler} /> : <img className='heart' src={heart} alt="likeIcon" onClick={likeHandler} />}
 
         </Card>
     )

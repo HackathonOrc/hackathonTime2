@@ -14,7 +14,7 @@ postRoutes.get('/all', (req: Request, res: Response) => {
     postController.getAllPosts(req, res);
 });
 
-postRoutes.delete('/delete', (req: Request, res: Response) => {
+postRoutes.delete('/delete/:id/:userName', (req: Request, res: Response) => {
     postController.deletePost(req, res);
 });
 
