@@ -8,6 +8,8 @@ interface IUser extends Document {
     name: string,
     email: string,
     password: string,
+    passwordResetToken: string,
+    passwordResetExpires: Date,
 }
 
 const UserSchema = new Schema<IUser>({
@@ -28,6 +30,14 @@ const UserSchema = new Schema<IUser>({
         required: true,
         select: false
     },
+    passwordResetToken:{
+        type: String,
+        select: false
+    },
+    passwordResetExpires:{
+        type: Date,
+        select: false
+    }
 
 });
 
