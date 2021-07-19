@@ -1,14 +1,24 @@
-# Hackathon Orc
+# 👩‍💻 Hackathon Orc
 
 Projeto criado como um desafio para os membros da Empresa Júnior de Engenharia de Sotware da Universidade de Brasília. 
 
 Consiste em uma cópia com as funcionalidades básicas do Twitter, para que os membros da empresa possam colocar em prática suas habilidades relacionadas a React JS e Node JS, com Mongo DB, junto a linguagem Typescript.
 
-# Deploy front
+# 🤘 Deploy front
 
 https://hackathon-time2-front.netlify.app
 
-## Iniciativa idealizada por:
+# 👉 Equipe 2
+
+João Gabriel de Matos - Dev
+João Victor Teixeira Batista - Dev
+Natan Tavares Santana - Dev
+Pedro Miguel - Dev
+Millena Queiroz - Guardiã
+Emily Dias - Gerente
+
+
+# 💡 Iniciativa idealizada por:
 
 * Lider: *[Gabriel Sabanai Trindade](https://github.com/Sabanai104)*
 
@@ -20,7 +30,7 @@ https://hackathon-time2-front.netlify.app
 
 * Membro: *[João Victor Correia](https://github.com/CorreiaJV)*
 
-## Rodando o projeto
+# 🚀 Rodando o projeto
 
 Para rodar o projeto, deve-se entrar tanto na pasta 'server' e pasta 'app' e rodar o comando:
 
@@ -29,3 +39,5 @@ Para rodar o projeto, deve-se entrar tanto na pasta 'server' e pasta 'app' e rod
 Depois vá para a pasta raiz do projeto e rode:
 
 * sudo docker-compose up --build
+
+Com o deploy do front é possível ir no link depois dos passos acima e entrar na aplicação normalmente
