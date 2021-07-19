@@ -61,16 +61,17 @@ function MainPage() {
         } catch (error) { }
 
     }
-    if (!user && !localStorage.getItem("user"))
-        return (
-            <>
-                {history.push('/login')}
-            </>)
 
 
     return (
 
         <ThemeProvider theme={theme}>
+            {(!user && !localStorage.getItem("user")) ?
+                <>
+                    {history.push('/login')}
+                </> :
+                <></>}
+
             <Page>
                 <Sidebar>
                     <ProfileData>
