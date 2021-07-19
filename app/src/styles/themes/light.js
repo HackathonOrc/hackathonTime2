@@ -5,7 +5,6 @@ import heartLike from '../../assets/heartLikeLight.svg'
 
 // eslint-disable-next-line
 export default {
-  title: "light",
 
     title: 'light',
 
@@ -17,7 +16,7 @@ export default {
         title: '#000000',
         text: '#5E5E5E',
         buttonText: '#2C2C2C',
-        date:'#70E864'
+        date: '#70E864'
 
     },
     logo: logo,
@@ -26,6 +25,6 @@ export default {
         text: 'Dark Mode'
 
     },
-    heartLike: heartLike
+    heartLike: heartLike,
 
 }

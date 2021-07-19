@@ -5,12 +5,14 @@ import api from '../../services/api';
 import { PostCardS as Card } from './postCard';
 
 import heart from '../../assets/heart.svg'
+import trash from '../../assets/trashIcon.svg'
 
 function PostCard(props) {
 
     const post = props.post;
     const date = new Date(post.date);
     const theme = props.theme;
+
     const { user } = useContext(UserContext);
 
     const [like, setLike] = useState(false);
@@ -70,7 +72,6 @@ function PostCard(props) {
 
     return (
         <Card>
-            {/* {console.log(typeof (date))} */}
             <div className="header">
                 <h3 className="userName"> {post && post.userName} </h3>
                 <span className="date">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</span>
@@ -78,7 +79,7 @@ function PostCard(props) {
                 {
                     user && user.userName === post.userName ?
                         <button className="delete" onClick={deleteHandler}>
-                            deletar
+                            <img src={trash} alt="" className="trash" />
                         </button>
                         :
                         <></>

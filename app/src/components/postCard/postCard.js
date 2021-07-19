@@ -17,6 +17,7 @@ export const PostCardS = styled.div`
 
     .header{    
         display: flex;
+
     }
     .date{
         /* align-self:flex-end; */
@@ -51,7 +52,7 @@ export const PostCardS = styled.div`
   .delete{
         cursor: pointer;
         height: fit-content;
-
+        margin: 0.8rem 0.5rem;
         background: transparent;
 
     }
@@ -63,6 +64,16 @@ export const PostCardS = styled.div`
         align-self: flex-end;
         margin-right: 2rem;
 
+    @media (max-width: 970px) {
+    .date{
+        margin-left:1rem;
+    }
+        .delete{
+        margin-right: 0.2rem;
+          
+      }
+
+        }
   @media (max-width: 281px) {
     max-width: 100%;
     margin-bottom: 3rem;
