@@ -22,9 +22,11 @@ function MainPage() {
 
 
     useEffect(() => {
-
-        if (!user)
-            recoverUser()
+        if (!user && !localStorage.getItem("user"))
+            history.push('/login')
+        else
+            if (!user)
+                recoverUser()
 
 
         // eslint-disable-next-line 
@@ -66,11 +68,6 @@ function MainPage() {
     return (
 
         <ThemeProvider theme={theme}>
-            {(!user && !localStorage.getItem("user")) ?
-                <>
-                    {history.push('/login')}
-                </> :
-                <></>}
 
             <Page>
                 <Sidebar>
