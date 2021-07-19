@@ -25,6 +25,10 @@ export const Sidebar = styled.section`
   width: 30rem;
   height: 100vh;
 
+  @media (max-width: 1300px) {
+    width: 23%;
+  }
+
   @media (max-width: 845px) {
     flex-direction: row;
     height: fit-content;
@@ -115,6 +119,16 @@ export const CardsSection = styled.section`
   margin-top: 8rem;
   width: 100%;
   height: 100%;
+
+  @media (max-width: 1300px) {
+    margin-left: 10rem;
+    width: 50%;
+  }
+
+  @media (max-width: 1300px) {
+    margin-left: 10rem;
+    width: 50%;
+  }
 
   @media (max-width: 900px) {
     margin-left: 6rem;
