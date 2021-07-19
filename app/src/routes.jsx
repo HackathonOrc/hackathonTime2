@@ -1,10 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Register from "./pages/RegisterPage/RegisterPage";
-import MainPage from "./pages/MainPage/MainPage";
-import Login from "./pages/LoginPage/LoginPage";
-import ForgotPassword from "./pages/ForgetPasswordPage/ForgetPasswordPage";
-import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Register from './pages/RegisterPage';
+import MainPage from './pages/MainPage/MainPage';
+import Login from './pages/LoginPage';
+import ForgotPassword from './pages/ForgetPasswordPage';
+import RecoverPassword from './pages/RecoverPassword';
 import validate from './services/validateSender'
 
 const Routes = () => {
