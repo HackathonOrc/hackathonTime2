@@ -1,16 +1,12 @@
-import * as jwt from 'jsonwebtoken';
-import * as authConfig from '../config/authConfig.json';
-
+import * as jwt from "jsonwebtoken";
+import * as authConfig from "../config/authConfig.json";
 
 export default async function isTokenValid(token) {
-    try {
+  try {
+    await jwt.verify(token, authConfig.secret);
 
-        await jwt.verify(token, authConfig.secret);
-
-        return true;
-
-    } catch (error) {
-
-        return false;
-    }
+    return true;
+  } catch (error) {
+    return false;
+  }
 }

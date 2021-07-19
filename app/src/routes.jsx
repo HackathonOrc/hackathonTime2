@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Register from "./pages/RegisterPage/RegisterPage";
+import Register from "./pages/RegisterPage";
 import MainPage from "./pages/MainPage/MainPage";
-import Login from "./pages/LoginPage/LoginPage";
-import ForgotPassword from "./pages/ForgetPasswordPage/ForgetPasswordPage";
-import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
-import validate from './services/validateSender'
+import Login from "./pages/LoginPage";
+import ForgotPassword from "./pages/ForgetPasswordPage";
+import RecoverPassword from "./pages/RecoverPassword";
+import validate from "./services/validateSender";
 
 const Routes = () => {
   return (
@@ -19,8 +19,6 @@ const Routes = () => {
         <Route path="/recover/" component={RecoverPassword} />
         <Route path="/validate/:userName/:token" component={validate} />
         <Route path="/validate/" component={validate} />
-
-
       </Switch>
     </Router>
   );

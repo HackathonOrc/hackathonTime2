@@ -1,14 +1,15 @@
+import {
+  Link,
+  Button,
+  Page,
+  Container,
+  TextInput,
+  Title,
+} from "../styles/GeneralStyles";
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
-
-import { Link } from "../../styles/Link";
-import { Button } from "../../styles/Button";
-import { Page } from "../../styles/Page";
-import { Container } from "../../styles/Container";
-import { TextInput } from "../../styles/TextInput";
-import { Title } from "../../styles/Title";
-import orc_jump from "../../assets/orc-pose-jump 1.png";
+import { UserContext } from "../context/userContext";
+import orc_jump from "../assets/orc-pose-jump 1.png";
 
 function Login() {
   const { user, login, recoverUser } = useContext(UserContext);
@@ -17,6 +18,7 @@ function Login() {
   useEffect(() => {
     if (!user) recoverUser();
     else history.push("/");
+
     // eslint-disable-next-line
   }, [user]);
 
@@ -25,7 +27,7 @@ function Login() {
       <Container>
         <img alt="orcinho" src={orc_jump} width="20%" />
         <Title>Faça seu login</Title>
-        <TextInput type="text" id="email" placeholder="Email" />
+        <TextInput type="email" id="email" placeholder="Email" />
         <TextInput type="password" id="password" placeholder="Senha" />
         <Button
           onClick={() => {
@@ -38,7 +40,7 @@ function Login() {
           Entrar
         </Button>
         <Link href="/forgetpassword"> Ops, esqueci minha senha </Link>
-        <Link href="/register"> Criar uma conta </Link>
+        <Link href="/register"> Criar uma conta nova </Link>
       </Container>
     </Page>
   );

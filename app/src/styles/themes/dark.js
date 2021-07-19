@@ -1,5 +1,6 @@
 import logo from "../../assets/logoDark.svg";
 import modeIcon from "../../assets/modeIconDark.svg";
+import heartLike from "../../assets/heartLikeDark.svg";
 
 // eslint-disable-next-line
 export default {
@@ -13,10 +14,12 @@ export default {
     title: "#FAFAFA",
     text: "#FAFAFA",
     buttonText: "#FAFAFA",
+    date: "#70E864",
   },
   logo: logo,
   mode: {
     icon: modeIcon,
     text: "Light Mode",
   },
+  heartLike: heartLike,
 };

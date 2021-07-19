@@ -8,11 +8,13 @@
 
 html{
   --white: #FAFAFA;
-  --background: #12482E;
-  --dark-background: #12482E;
+  --background: #70E864;
+  --dark-green: #12482E;
   --green: #6AE01A;
   --detail-green: #71E025;
   --black: #000000;
+  --black-green: #082115;
+  --gray: rgba(161, 161, 161);
 
   font-size: 62.5%;
 }

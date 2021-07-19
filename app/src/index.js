@@ -1,10 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Routes from './routes';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Routes from "./routes";
 
-import { UserProvider } from "./context/userContext"
-
+import { UserProvider } from "./context/userContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,5 +11,5 @@ ReactDOM.render(
       <Routes />
     </UserProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
