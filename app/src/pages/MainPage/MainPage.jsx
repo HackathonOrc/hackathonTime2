@@ -22,11 +22,18 @@ function MainPage() {
 
 
     useEffect(() => {
-        if (!user && !localStorage.getItem("user"))
-            history.push('/login')
-        else
-            if (!user)
-                recoverUser()
+        let componentMounted = true;
+        if (componentMounted) {
+            if (!user && !localStorage.getItem("user"))
+                history.push('/login')
+            else
+                if (!user)
+                    recoverUser()
+        }
+
+        return () => {
+            componentMounted = false;
+        }
 
 
         // eslint-disable-next-line 
