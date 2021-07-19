@@ -4,6 +4,10 @@ Projeto criado como um desafio para os membros da Empresa Júnior de Engenharia 
 
 Consiste em uma cópia com as funcionalidades básicas do Twitter, para que os membros da empresa possam colocar em prática suas habilidades relacionadas a React JS e Node JS, com Mongo DB, junto a linguagem Typescript.
 
+# Deploy front
+
+https://hackathon-time2-front.netlify.app
+
 ## Iniciativa idealizada por:
 
 * Lider: *[Gabriel Sabanai Trindade](https://github.com/Sabanai104)*
