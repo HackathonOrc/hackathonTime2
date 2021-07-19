@@ -31,21 +31,22 @@ function MainPage() {
 
   useEffect(() => {
     let componentMounted = true;
-    if (componentMounted) {
-      if (!user && !localStorage.getItem("user")) history.push("/login");
-      else if (!user) recoverUser();
-    }
+    if (!user && !localStorage.getItem("user") && componentMounted)
+      history.push("/login");
+    else if (!user) recoverUser();
 
     return () => {
       componentMounted = false;
     };
-
     // eslint-disable-next-line
   }, [user]);
 
   useEffect(() => {
-    if (user) getPosts();
-
+    let componentMounted = true;
+    if (user && componentMounted) getPosts();
+    return () => {
+      componentMounted = false;
+    };
     // eslint-disable-next-line
   }, [postPost]);
 

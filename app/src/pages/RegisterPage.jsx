@@ -25,7 +25,7 @@ function Register() {
       <Container>
         <Title>Cadastr'orc</Title>
         <TextInput placeholder="Nome" id="name" />
-        <TextInput type="text" placeholder="Username" id="userName" />
+        <TextInput type="text" placeholder="Apelido" id="userName" />
         <TextInput type="email" placeholder="Email" id="email" />
         <TextInput type="password" placeholder="Senha" id="password" />
         <TextInput

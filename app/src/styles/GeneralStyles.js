@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Button = styled.button`
   width: min(34rem, 70%);
   height: 5rem;
-  background: none;
-  border: 2px solid #6ae01a;
+  background: var(--black-green);
+  border: 2px solid var(--detail-green);
   border-radius: 5px;
   font-family: "Roboto", sans-serif;
   font-size: 2em;
   font-weight: 400;
-  color: #6ae01a;
+  color: var(--white);
   cursor: pointer;
   margin-top: 1rem;
 
@@ -23,7 +23,7 @@ export const Container = styled.section`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: #ffffff;
+  background: var(--white);
   width: 37.5vw;
   height: 83.4vh;
   border-radius: 1em;
@@ -40,7 +40,7 @@ export const Link = styled.a`
   font-family: "Roboto", sans-serif;
   font-size: 1.5em;
   font-weight: 700;
-  color: var(--green);
+  color: var(--dark-green);
   text-decoration: underline;
 
   @media (max-width: 800px) {
@@ -53,7 +53,7 @@ export const Page = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #70e864;
+  background: var(--dark-green);
   min-width: 100vw;
   min-height: 100vh;
 `;
@@ -72,15 +72,16 @@ export const Text = styled.p`
 export const TextInput = styled.input`
   width: 25vw;
   font-family: "Roboto", sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 700;
-  color: rgba(161, 161, 161);
-  border-bottom: 2px solid rgba(161, 161, 161);
+  color: var(--gray);
+  border-bottom: 2px solid var(--gray);
   outline: none;
+  background-color: transparent;
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: rgba(161, 161, 161);
+    color: var(--gray);
   }
 
   @media (max-width: 800px) {
@@ -91,9 +92,9 @@ export const TextInput = styled.input`
 
 export const Title = styled.h1`
   font-family: "Roboto", sans-serif;
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 400;
-  color: rgba(0, 0, 0, 1);
+  color: var(--black);
   margin-top: 0.8rem;
 
   @media (max-width: 800px) {

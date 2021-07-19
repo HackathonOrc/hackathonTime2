@@ -155,13 +155,13 @@ export const CreatePostCard = styled.div`
 
   .userName {
     color: ${(props) => props.theme.colors.title};
-    margin-left: 8rem;
+    margin-left: 2rem;
     margin-top: 1.2rem;
     font-size: 3rem;
   }
   .newPost {
     margin-top: 1rem;
-    margin-left: 8rem;
+    margin-left: 2rem;
 
     background: transparent;
     border: none;
@@ -179,7 +179,7 @@ export const CreatePostCard = styled.div`
 
     font-weight: 600;
     font-size: 2rem;
-    margin-top: 3rem;
+    margin-top: 5rem;
 
     margin-left: auto;
     margin-right: 2rem;
@@ -188,8 +188,9 @@ export const CreatePostCard = styled.div`
   @media (max-width: 845px) {
     max-width: 100%;
     min-height: 156px;
+    padding-bottom: 10px;
 
-        cursor: pointer;
+    cursor: pointer;
 
     .userName {
       margin-left: 2rem;
@@ -213,8 +214,6 @@ export const CreatePostCard = styled.div`
     margin-bottom: 3rem;
   }
 `;
-
-
 
 //#endregion
 
