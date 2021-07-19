@@ -42,8 +42,7 @@ export function UserProvider({ children }, props) {
       console.error(error.response.data);
       if (error.response.data.message === "Email ainda não verificado")
         window.alert("Email ainda não verificado");
-      else
-        window.alert("Email ou Senha inválidos");
+      else window.alert("Email ou Senha inválidos");
     }
   }
 
@@ -75,8 +74,9 @@ export function UserProvider({ children }, props) {
         //   // console.log({ message: "usuario criado" })
         //   saveUser(res.data.user, res.data.token);
         // }
-        window.alert('Email de confirmação enviado,verifique sua caixa de entrada.')
-
+        window.alert(
+          "Email de confirmação enviado,verifique sua caixa de entrada."
+        );
       } else {
         window.alert("Senhas diferentes");
         console.log({ message: "Senhas diferentes" });

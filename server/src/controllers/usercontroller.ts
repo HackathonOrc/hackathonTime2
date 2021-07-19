@@ -159,7 +159,9 @@ export default class UserController {
       );
       return res.status(200).send({ message: "email enviado" });
     } catch (err) {
-      res.status(400).send({ error: "Error em esquecer senha, tente novamente" });
+      res
+        .status(400)
+        .send({ error: "Error em esquecer senha, tente novamente" });
     }
   };
 
@@ -182,7 +184,6 @@ export default class UserController {
         return res.status(404).json({ message: "Token expirado" });
 
       user.password = password;
-      // user.passwordResetToken = '';
       user.passwordResetExpires = now;
       await user.save();
 
