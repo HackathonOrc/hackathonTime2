@@ -5,7 +5,15 @@ import { useHistory } from "react-router-dom";
 
 import api from "../services/api";
 
-import { Link, Button, Page, Container, TextInput, Title, Text } from '../styles/GeneralStyles';
+import {
+  Link,
+  Button,
+  Page,
+  Container,
+  TextInput,
+  Title,
+  Text,
+} from "../styles/GeneralStyles";
 import orc_jump from "../assets/orc-pose-jump 1.png";
 
 function RecoverPassword() {
