@@ -38,6 +38,7 @@ export const PostCardS = styled.div`
     color:${(props) => props.theme.colors.text};
     margin-left: 2rem;
     margin-top: 1rem;
+    margin-right: 1rem;
     margin-bottom: 1rem;
     font-weight: 400;
     overflow-x: hidden;
@@ -46,6 +47,7 @@ export const PostCardS = styled.div`
     ::-webkit-input-placeholder {
         color: #70E864;
     }
+    text-align: justify;
   }
 
   .delete{
