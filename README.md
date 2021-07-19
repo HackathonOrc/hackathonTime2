@@ -10,11 +10,11 @@ https://hackathon-time2-front.netlify.app
 
 ## 👉 Equipe 2
 
-João Gabriel de Matos - Dev
-João Victor Teixeira Batista - Dev
-Natan Tavares Santana - Dev
-Pedro Miguel - Dev
-Millena Queiroz - Guardiã
+João Gabriel de Matos - Dev <br>
+João Victor Teixeira Batista - Dev <br>
+Natan Tavares Santana - Dev <br>
+Pedro Miguel - Dev <br>
+Millena Queiroz - Guardiã <br>
 Emily Dias - Gerente
 
 
