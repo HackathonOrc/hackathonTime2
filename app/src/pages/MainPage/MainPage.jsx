@@ -25,7 +25,7 @@ function MainPage() {
 
         if (!user)
             recoverUser()
-        
+
 
         // eslint-disable-next-line 
     }, [user])
@@ -64,7 +64,7 @@ function MainPage() {
     if (!user && !localStorage.getItem("user"))
         return (
             <>
-            {history.push('/login')}
+                {history.push('/login')}
             </>)
 
 
@@ -115,7 +115,6 @@ function MainPage() {
             </Page>
         </ThemeProvider>
     )
-
 }
 
 export default MainPage;

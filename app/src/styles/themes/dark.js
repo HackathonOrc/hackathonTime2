@@ -4,6 +4,7 @@ import heartLike from '../../assets/heartLikeDark.svg'
 
 // eslint-disable-next-line
 export default {
+  title: "dark",
 
     title: 'dark',
 

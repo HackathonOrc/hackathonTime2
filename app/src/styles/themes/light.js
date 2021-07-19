@@ -5,6 +5,7 @@ import heartLike from '../../assets/heartLikeLight.svg'
 
 // eslint-disable-next-line
 export default {
+  title: "light",
 
     title: 'light',
 
